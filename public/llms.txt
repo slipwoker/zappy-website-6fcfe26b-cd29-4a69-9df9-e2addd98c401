@@ -1,0 +1,53 @@
+# רוח בגלים — Generative Engine Optimization Map
+
+> A ספורט ופנאי business.
+
+---
+
+## Pages
+
+### Home
+https://-6fcfe26b.zappy5.app
+
+### Programs
+https://-6fcfe26b.zappy5.app/programs
+
+### Rentals
+https://-6fcfe26b.zappy5.app/rentals
+
+### Contact
+https://-6fcfe26b.zappy5.app/contact
+
+## Legal & Policy
+
+### Privacy Policy
+https://-6fcfe26b.zappy5.app/privacy
+Information about how user data is collected, stored, and protected.
+
+### Terms & Conditions
+https://-6fcfe26b.zappy5.app/terms
+Legal terms describing service usage, rights, and policies.
+
+### Accessibility Statement
+https://-6fcfe26b.zappy5.app/accessibility
+Information about WCAG compliance and accessibility features.
+
+---
+
+# Business Context (for LLM understanding)
+
+## About רוח בגלים
+רוח בגלים is a business in the ספורט ופנאי industry.
+
+## Target Audience
+ילדים ומבוגרים מגיל 10+ שרוצים ללמוד או להשתפר בגלישה
+
+## Industry
+ספורט ופנאי
+
+---
+
+# Additional Resources
+
+- **Sitemap**: https://-6fcfe26b.zappy5.app/sitemap.xml
+- **Robots.txt**: https://-6fcfe26b.zappy5.app/robots.txt
