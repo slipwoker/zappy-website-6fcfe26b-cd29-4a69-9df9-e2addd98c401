@@ -1,4 +1,6 @@
-# Business — Generative Engine Optimization Map
+# רוח בגלים — Generative Engine Optimization Map
+
+> A ספורט ופנאי business.
 
 ---
 
@@ -54,7 +56,15 @@ Information about WCAG compliance and accessibility features.
 
 # Business Context (for LLM understanding)
 
-## About Business
+## About רוח בגלים
+רוח בגלים is a business in the ספורט ופנאי industry.
+
+## Target Audience
+ילדים ומבוגרים מגיל 10+ שרוצים ללמוד או להשתפר בגלישה
+
+## Industry
+ספורט ופנאי
+
 ---
 
 # Additional Resources
