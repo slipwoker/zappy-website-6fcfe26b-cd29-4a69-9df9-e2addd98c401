@@ -1,43 +1,53 @@
-# Business — Generative Engine Optimization Map
+# רוח בגלים — Generative Engine Optimization Map
+
+> A ספורט ופנאי business.
 
 ---
 
 ## Pages
 
 ### Home
-https://example.com
+https://ruach-bagalim.zappy5.app
 
 ### Programs
-https://example.com/programs
+https://ruach-bagalim.zappy5.app/programs
 
 ### Rentals
-https://example.com/rentals
+https://ruach-bagalim.zappy5.app/rentals
 
 ### Contact
-https://example.com/contact
+https://ruach-bagalim.zappy5.app/contact
 
 ## Legal & Policy
 
 ### Privacy Policy
-https://example.com/privacy
+https://ruach-bagalim.zappy5.app/privacy
 Information about how user data is collected, stored, and protected.
 
 ### Terms & Conditions
-https://example.com/terms
+https://ruach-bagalim.zappy5.app/terms
 Legal terms describing service usage, rights, and policies.
 
 ### Accessibility Statement
-https://example.com/accessibility
+https://ruach-bagalim.zappy5.app/accessibility
 Information about WCAG compliance and accessibility features.
 
 ---
 
 # Business Context (for LLM understanding)
 
-## About Business
+## About רוח בגלים
+רוח בגלים is a business in the ספורט ופנאי industry.
+
+## Target Audience
+ילדים ומבוגרים מגיל 10+ שרוצים ללמוד או להשתפר בגלישה
+
+## Industry
+ספורט ופנאי
+
 ---
 
 # Additional Resources
 
-- **Sitemap**: https://example.com/sitemap.xml
-- **Robots.txt**: https://example.com/robots.txt
+- **Sitemap**: https://ruach-bagalim.zappy5.app/sitemap.xml
+- **Robots.txt**: https://ruach-bagalim.zappy5.app/robots.txt
