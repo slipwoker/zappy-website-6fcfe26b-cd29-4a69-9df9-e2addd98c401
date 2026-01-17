@@ -207,9 +207,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-}
-
-html {
+}html[dir="rtl"]{
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -801,16 +799,9 @@ ul, ol {
     display: block;
     padding: 1rem 2rem;
   }
-}
-
-/* Footer Styles */
-.site-footer {
-  background: linear-gradient(135deg, var(--primary, #071828) 0%, var(--background-dark, #062B4A) 100%);
-  color: var(--text-light, #F3FAFF);
-  padding: 60px 20px 20px;
-  direction: rtl;
-  font-family: 'Rubik', sans-serif;
-}
+}/* Footer Styles */
+.site-footer{background: linear-gradient(135deg, var(--primary, #071828) 0%, var(--background-dark, #062B4A) 100%);color: var(--text-light, #F3FAFF);padding: 60px 20px 20px;font-family: 'Rubik', sans-serif;}html[dir="rtl"] /* Footer Styles */
+.site-footer{direction: rtl;}
 
 .footer-container {
   max-width: 1200px;
@@ -1729,16 +1720,9 @@ ul, ol {
 
 .home-gallery-section .cta-text{max-width:none !important}
 
-.home-gallery-section .btn-primary{width:100%;padding:16px 28px}}
-
-/* home-testimonials */
-.home-testimonials-section {
-  position: relative;
-  background: radial-gradient(120% 90% at 10% 10%, #1C6E95 0%, #0B3B63 45%, #062B4A 100%);
-  padding: 120px 24px 180px;
-  overflow: hidden;
-  direction: rtl;
-}
+.home-gallery-section .btn-primary{width:100%;padding:16px 28px}}/* home-testimonials */
+.home-testimonials-section{position: relative;background: radial-gradient(120% 90% at 10% 10%, #1C6E95 0%, #0B3B63 45%, #062B4A 100%);padding: 120px 24px 180px;overflow: hidden;}html[dir="rtl"] /* home-testimonials */
+.home-testimonials-section{direction: rtl;}
 
 .home-testimonials-section::before {
   content: '';
@@ -2715,16 +2699,9 @@ ul, ol {
     padding: 14px 32px;
     width: 100%;
   }
-}
-
-/* programs-stats */
-.programs-stats-section {
-  position: relative;
-  background: radial-gradient(120% 90% at 10% 10%, #1C6E95 0%, #0B3B63 45%, #062B4A 100%);
-  padding: 120px 24px;
-  overflow: hidden;
-  direction: rtl;
-}
+}/* programs-stats */
+.programs-stats-section{position: relative;background: radial-gradient(120% 90% at 10% 10%, #1C6E95 0%, #0B3B63 45%, #062B4A 100%);padding: 120px 24px;overflow: hidden;}html[dir="rtl"] /* programs-stats */
+.programs-stats-section{direction: rtl;}
 
 .programs-stats-section .stats-container {
   max-width: 1200px;
@@ -2920,15 +2897,7 @@ ul, ol {
 }
 
 /* programs-team */
-:root{--primary:#1F7EA9;--secondary:#0B3B63;--accent:#C9FF2E;--accent-alt:#7FE6E6;--gold:#FFB86B;--bg-dark:#062B4A;--bg-med:#1B6F96;--bg-light:#DFF4FA;--text-light:#F2FBFF;--text-dark:#0B3559;--text-muted:#6E9BB4;--border-light:rgba(255,255,255,0.55);--border-dark:rgba(7,36,61,0.18);--radius-sm:12px;--radius-md:18px;--radius-lg:22px;--radius-xl:28px;--shadow-soft:0 12px 28px rgba(7,28,50,0.10);--shadow-med:0 18px 40px rgba(7,28,50,0.14);--shadow-strong:0 26px 60px rgba(7,28,50,0.18);--glass:rgba(255,255,255,0.35);--blur:14px;}
-
-.programs-team-section {
-  position: relative;
-  background: radial-gradient(120% 120% at 50% 0%, #FFFFFF 0%, #EAF8FC 35%, #DFF4FA 100%);
-  padding: 100px 20px 120px;
-  overflow: hidden;
-  direction: rtl;
-}
+:root{--primary:#1F7EA9;--secondary:#0B3B63;--accent:#C9FF2E;--accent-alt:#7FE6E6;--gold:#FFB86B;--bg-dark:#062B4A;--bg-med:#1B6F96;--bg-light:#DFF4FA;--text-light:#F2FBFF;--text-dark:#0B3559;--text-muted:#6E9BB4;--border-light:rgba(255,255,255,0.55);--border-dark:rgba(7,36,61,0.18);--radius-sm:12px;--radius-md:18px;--radius-lg:22px;--radius-xl:28px;--shadow-soft:0 12px 28px rgba(7,28,50,0.10);--shadow-med:0 18px 40px rgba(7,28,50,0.14);--shadow-strong:0 26px 60px rgba(7,28,50,0.18);--glass:rgba(255,255,255,0.35);--blur:14px;}.programs-team-section{position: relative;background: radial-gradient(120% 120% at 50% 0%, #FFFFFF 0%, #EAF8FC 35%, #DFF4FA 100%);padding: 100px 20px 120px;overflow: hidden;}html[dir="rtl"] .programs-team-section{direction: rtl;}
 
 .programs-team-section__container {
   max-width: 1200px;
@@ -3121,15 +3090,7 @@ ul, ol {
 }
 
 /* programs-cta */
-:root{--primary:#1F7EA9;--secondary:#0B3B63;--accent:#C9FF2E;--accent-alt:#7FE6E6;--gold:#FFB86B;--bg-dark:#062B4A;--bg-med:#1B6F96;--bg-light:#DFF4FA;--text-light:#F2FBFF;--text-dark:#0B3559;--text-muted:#6E9BB4;--border-light:rgba(255,255,255,0.55);--border-dark:rgba(7,36,61,0.18);--radius-sm:12px;--radius-md:18px;--radius-lg:22px;--radius-xl:28px;--shadow-soft:0 12px 28px rgba(7,28,50,0.10);--shadow-med:0 18px 40px rgba(7,28,50,0.14);--shadow-strong:0 26px 60px rgba(7,28,50,0.18);--glass:rgba(255,255,255,0.35);--blur:14px;}
-
-.programs-cta-section {
-  position: relative;
-  background: radial-gradient(120% 90% at 10% 10%, #1C6E95 0%, #0B3B63 45%, #062B4A 100%);
-  padding: 120px 24px;
-  overflow: hidden;
-  direction: rtl;
-}
+:root{--primary:#1F7EA9;--secondary:#0B3B63;--accent:#C9FF2E;--accent-alt:#7FE6E6;--gold:#FFB86B;--bg-dark:#062B4A;--bg-med:#1B6F96;--bg-light:#DFF4FA;--text-light:#F2FBFF;--text-dark:#0B3559;--text-muted:#6E9BB4;--border-light:rgba(255,255,255,0.55);--border-dark:rgba(7,36,61,0.18);--radius-sm:12px;--radius-md:18px;--radius-lg:22px;--radius-xl:28px;--shadow-soft:0 12px 28px rgba(7,28,50,0.10);--shadow-med:0 18px 40px rgba(7,28,50,0.14);--shadow-strong:0 26px 60px rgba(7,28,50,0.18);--glass:rgba(255,255,255,0.35);--blur:14px;}.programs-cta-section{position: relative;background: radial-gradient(120% 90% at 10% 10%, #1C6E95 0%, #0B3B63 45%, #062B4A 100%);padding: 120px 24px;overflow: hidden;}html[dir="rtl"] .programs-cta-section{direction: rtl;}
 
 .programs-cta-section__container {
   max-width: 1200px;
@@ -3312,15 +3273,7 @@ ul, ol {
 @media (min-width:1024px){.rentals-hero-section .rentals-hero-container{gap:80px}.rentals-hero-section .rentals-hero-glass-card{padding:64px 56px}}
 
 /* rentals-gallery */
-:root{--primary:#1F7EA9;--secondary:#0B3B63;--accent:#C9FF2E;--accent-alt:#7FE6E6;--gold:#FFB86B;--bg-dark:#062B4A;--bg-med:#1B6F96;--bg-light:#DFF4FA;--text-light:#F2FBFF;--text-dark:#0B3559;--text-muted:#6E9BB4;--border-light:rgba(255,255,255,0.55);--border-dark:rgba(7,36,61,0.18);--radius-sm:12px;--radius-md:18px;--radius-lg:22px;--radius-xl:28px;--shadow-soft:0 12px 28px rgba(7,28,50,0.10);--shadow-med:0 18px 40px rgba(7,28,50,0.14);--shadow-strong:0 26px 60px rgba(7,28,50,0.18);--glass:rgba(255,255,255,0.35);--blur:14px;}
-
-.rentals-gallery-section {
-  position: relative;
-  background: radial-gradient(120% 120% at 50% 0%, #FFFFFF 0%, #EAF8FC 35%, #DFF4FA 100%);
-  padding: 100px 20px 120px;
-  overflow: hidden;
-  direction: rtl;
-}
+:root{--primary:#1F7EA9;--secondary:#0B3B63;--accent:#C9FF2E;--accent-alt:#7FE6E6;--gold:#FFB86B;--bg-dark:#062B4A;--bg-med:#1B6F96;--bg-light:#DFF4FA;--text-light:#F2FBFF;--text-dark:#0B3559;--text-muted:#6E9BB4;--border-light:rgba(255,255,255,0.55);--border-dark:rgba(7,36,61,0.18);--radius-sm:12px;--radius-md:18px;--radius-lg:22px;--radius-xl:28px;--shadow-soft:0 12px 28px rgba(7,28,50,0.10);--shadow-med:0 18px 40px rgba(7,28,50,0.14);--shadow-strong:0 26px 60px rgba(7,28,50,0.18);--glass:rgba(255,255,255,0.35);--blur:14px;}.rentals-gallery-section{position: relative;background: radial-gradient(120% 120% at 50% 0%, #FFFFFF 0%, #EAF8FC 35%, #DFF4FA 100%);padding: 100px 20px 120px;overflow: hidden;}html[dir="rtl"] .rentals-gallery-section{direction: rtl;}
 
 .rentals-gallery-container {
   max-width: 1200px;
@@ -3571,15 +3524,7 @@ ul, ol {
 }
 
 /* rentals-features */
-:root{--primary:#1F7EA9;--secondary:#0B3B63;--accent:#C9FF2E;--accent-alt:#7FE6E6;--gold:#FFB86B;--bg-dark:#062B4A;--bg-med:#1B6F96;--bg-light:#DFF4FA;--text-light:#F2FBFF;--text-dark:#0B3559;--text-muted:#6E9BB4;--border-light:rgba(255,255,255,0.55);--border-dark:rgba(7,36,61,0.18);--radius-sm:12px;--radius-md:18px;--radius-lg:22px;--radius-xl:28px;--shadow-soft:0 12px 28px rgba(7,28,50,0.10);--shadow-med:0 18px 40px rgba(7,28,50,0.14);--shadow-strong:0 26px 60px rgba(7,28,50,0.18);--glass:rgba(255,255,255,0.35);--blur:14px;}
-
-.rentals-features-section {
-  position: relative;
-  background: radial-gradient(120% 120% at 50% 0%, #FFFFFF 0%, #EAF8FC 35%, #DFF4FA 100%);
-  padding: 100px 20px 120px;
-  overflow: hidden;
-  direction: rtl;
-}
+:root{--primary:#1F7EA9;--secondary:#0B3B63;--accent:#C9FF2E;--accent-alt:#7FE6E6;--gold:#FFB86B;--bg-dark:#062B4A;--bg-med:#1B6F96;--bg-light:#DFF4FA;--text-light:#F2FBFF;--text-dark:#0B3559;--text-muted:#6E9BB4;--border-light:rgba(255,255,255,0.55);--border-dark:rgba(7,36,61,0.18);--radius-sm:12px;--radius-md:18px;--radius-lg:22px;--radius-xl:28px;--shadow-soft:0 12px 28px rgba(7,28,50,0.10);--shadow-med:0 18px 40px rgba(7,28,50,0.14);--shadow-strong:0 26px 60px rgba(7,28,50,0.18);--glass:rgba(255,255,255,0.35);--blur:14px;}.rentals-features-section{position: relative;background: radial-gradient(120% 120% at 50% 0%, #FFFFFF 0%, #EAF8FC 35%, #DFF4FA 100%);padding: 100px 20px 120px;overflow: hidden;}html[dir="rtl"] .rentals-features-section{direction: rtl;}
 
 .rentals-features-section::before {
   content: '';
@@ -3816,15 +3761,7 @@ ul, ol {
 }
 
 /* rentals-testimonials */
-:root{--primary:#1F7EA9;--secondary:#0B3B63;--accent:#C9FF2E;--accent-alt:#7FE6E6;--gold:#FFB86B;--bg-dark:#062B4A;--bg-med:#1B6F96;--bg-light:#DFF4FA;--text-light:#F2FBFF;--text-dark:#0B3559;--text-muted:#6E9BB4;--border-light:rgba(255,255,255,0.55);--border-dark:rgba(7,36,61,0.18);--radius-sm:12px;--radius-md:18px;--radius-lg:22px;--radius-xl:28px;--shadow-soft:0 12px 28px rgba(7,28,50,0.10);--shadow-med:0 18px 40px rgba(7,28,50,0.14);--shadow-strong:0 26px 60px rgba(7,28,50,0.18);--glass:rgba(255,255,255,0.35);--blur:14px;}
-
-.rentals-testimonials-section {
-  position: relative;
-  background: radial-gradient(120% 90% at 10% 10%, #1C6E95 0%, #0B3B63 45%, #062B4A 100%);
-  padding: 120px 24px;
-  overflow: hidden;
-  direction: rtl;
-}
+:root{--primary:#1F7EA9;--secondary:#0B3B63;--accent:#C9FF2E;--accent-alt:#7FE6E6;--gold:#FFB86B;--bg-dark:#062B4A;--bg-med:#1B6F96;--bg-light:#DFF4FA;--text-light:#F2FBFF;--text-dark:#0B3559;--text-muted:#6E9BB4;--border-light:rgba(255,255,255,0.55);--border-dark:rgba(7,36,61,0.18);--radius-sm:12px;--radius-md:18px;--radius-lg:22px;--radius-xl:28px;--shadow-soft:0 12px 28px rgba(7,28,50,0.10);--shadow-med:0 18px 40px rgba(7,28,50,0.14);--shadow-strong:0 26px 60px rgba(7,28,50,0.18);--glass:rgba(255,255,255,0.35);--blur:14px;}.rentals-testimonials-section{position: relative;background: radial-gradient(120% 90% at 10% 10%, #1C6E95 0%, #0B3B63 45%, #062B4A 100%);padding: 120px 24px;overflow: hidden;}html[dir="rtl"] .rentals-testimonials-section{direction: rtl;}
 
 .rentals-testimonials-section .testimonials-container {
   max-width: 1200px;
@@ -3998,16 +3935,9 @@ ul, ol {
   .rentals-testimonials-section .testimonials-grid {
     margin-bottom: 72px;
   }
-}
-
-/* rentals-cta */
-.rentals-cta-section {
-  position: relative;
-  background: radial-gradient(120% 120% at 50% 0%, #FFFFFF 0%, #EAF8FC 35%, #DFF4FA 100%);
-  padding: 120px 24px;
-  overflow: hidden;
-  direction: rtl;
-}
+}/* rentals-cta */
+.rentals-cta-section{position: relative;background: radial-gradient(120% 120% at 50% 0%, #FFFFFF 0%, #EAF8FC 35%, #DFF4FA 100%);padding: 120px 24px;overflow: hidden;}html[dir="rtl"] /* rentals-cta */
+.rentals-cta-section{direction: rtl;}
 
 .rentals-cta-section .rentals-cta-container {
   max-width: 880px;
@@ -4395,15 +4325,7 @@ ul, ol {
 }
 
 /* contact-features */
-:root{--primary:#1F7EA9;--secondary:#0B3B63;--accent:#C9FF2E;--accent-alt:#7FE6E6;--gold:#FFB86B;--bg-dark:#062B4A;--bg-med:#1B6F96;--bg-light:#DFF4FA;--text-light:#F2FBFF;--text-dark:#0B3559;--text-muted:#6E9BB4;--border-light:rgba(255,255,255,0.55);--border-dark:rgba(7,36,61,0.18);--radius-sm:12px;--radius-md:18px;--radius-lg:22px;--radius-xl:28px;--shadow-soft:0 12px 28px rgba(7,28,50,0.10);--shadow-med:0 18px 40px rgba(7,28,50,0.14);--shadow-strong:0 26px 60px rgba(7,28,50,0.18);--glass:rgba(255,255,255,0.35);--blur:14px;}
-
-.contact-features-section {
-  position: relative;
-  background: radial-gradient(120% 120% at 50% 0%, #FFFFFF 0%, #EAF8FC 35%, #DFF4FA 100%);
-  padding: 100px 24px;
-  overflow: hidden;
-  direction: rtl;
-}
+:root{--primary:#1F7EA9;--secondary:#0B3B63;--accent:#C9FF2E;--accent-alt:#7FE6E6;--gold:#FFB86B;--bg-dark:#062B4A;--bg-med:#1B6F96;--bg-light:#DFF4FA;--text-light:#F2FBFF;--text-dark:#0B3559;--text-muted:#6E9BB4;--border-light:rgba(255,255,255,0.55);--border-dark:rgba(7,36,61,0.18);--radius-sm:12px;--radius-md:18px;--radius-lg:22px;--radius-xl:28px;--shadow-soft:0 12px 28px rgba(7,28,50,0.10);--shadow-med:0 18px 40px rgba(7,28,50,0.14);--shadow-strong:0 26px 60px rgba(7,28,50,0.18);--glass:rgba(255,255,255,0.35);--blur:14px;}.contact-features-section{position: relative;background: radial-gradient(120% 120% at 50% 0%, #FFFFFF 0%, #EAF8FC 35%, #DFF4FA 100%);padding: 100px 24px;overflow: hidden;}html[dir="rtl"] .contact-features-section{direction: rtl;}
 
 .contact-features-section .background-pattern {
   position: absolute;
@@ -4655,16 +4577,9 @@ ul, ol {
   .contact-features-section .contact-title {
     font-size: 64px;
   }
-}
-
-/* contact-gallery */
-.contact-gallery-section {
-  position: relative;
-  background: radial-gradient(120% 120% at 50% 0%, #FFFFFF 0%, #EAF8FC 35%, #DFF4FA 100%);
-  padding: 100px 24px;
-  overflow: hidden;
-  direction: rtl;
-}
+}/* contact-gallery */
+.contact-gallery-section{position: relative;background: radial-gradient(120% 120% at 50% 0%, #FFFFFF 0%, #EAF8FC 35%, #DFF4FA 100%);padding: 100px 24px;overflow: hidden;}html[dir="rtl"] /* contact-gallery */
+.contact-gallery-section{direction: rtl;}
 
 .contact-gallery-section::before {
   content: '';
@@ -5424,44 +5339,28 @@ html[lang="fr"] .nav-cta-container {
 /* ============================================
    RTL DESKTOP LAYOUT (Hebrew, Arabic)
    ============================================ */
-html[dir="rtl"] .nav-container,
+.nav-container,
 html[lang="he"] .nav-container,
-html[lang="ar"] .nav-container {
-  flex-direction: row-reverse;
-  justify-content: space-between;
-}
+html[lang="ar"] .nav-container{flex-direction: row-reverse;justify-content: space-between;}
 
 /* CTA on the left in RTL */
-html[dir="rtl"] .nav-cta-container,
+.nav-cta-container,
 html[lang="he"] .nav-cta-container,
-html[lang="ar"] .nav-cta-container {
-  order: -1;
-  margin: 0;
-}
+html[lang="ar"] .nav-cta-container{order: -1;margin: 0;}
 
 /* Wrapper groups menu and logo together on the right */
-html[dir="rtl"] .nav-right-group,
+.nav-right-group,
 html[lang="he"] .nav-right-group,
-html[lang="ar"] .nav-right-group {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-  order: 1;
-  flex-direction: row-reverse;
-}
+html[lang="ar"] .nav-right-group{display: flex;align-items: center;gap: 2rem;order: 1;flex-direction: row-reverse;}
 
 /* Within wrapper: Logo on far right, menu to its left */
-html[dir="rtl"] .nav-right-group .nav-brand,
+.nav-right-group .nav-brand,
 html[lang="he"] .nav-right-group .nav-brand,
-html[lang="ar"] .nav-right-group .nav-brand {
-  order: 2;
-}
+html[lang="ar"] .nav-right-group .nav-brand{order: 2;}
 
-html[dir="rtl"] .nav-right-group .nav-menu,
+.nav-right-group .nav-menu,
 html[lang="he"] .nav-right-group .nav-menu,
-html[lang="ar"] .nav-right-group .nav-menu {
-  order: 1;
-}
+html[lang="ar"] .nav-right-group .nav-menu{order: 1;}
 
 /* Desktop: Hide mobile-only elements */
 @media (min-width: 769px) {
@@ -5660,32 +5559,21 @@ html[lang="ar"] .nav-right-group .nav-menu {
    (natural mirror of LTR layout)
    ============================================ */
 @media (max-width: 768px) {
-  html[dir="rtl"] .mobile-toggle,
+  .mobile-toggle,
   html[lang="he"] .mobile-toggle,
-  html[lang="ar"] .mobile-toggle {
-    left: auto;
-    right: 15px;
-  }
+  html[lang="ar"] .mobile-toggle{left: auto;right: 15px;}
   
-  html[dir="rtl"] .phone-header-btn,
+  .phone-header-btn,
   html[lang="he"] .phone-header-btn,
-  html[lang="ar"] .phone-header-btn {
-    left: 15px;
-    right: auto;
-  }
+  html[lang="ar"] .phone-header-btn{left: 15px;right: auto;}
   
-  html[dir="rtl"] .nav-menu,
+  .nav-menu,
   html[lang="he"] .nav-menu,
-  html[lang="ar"] .nav-menu {
-    right: 0;
-    left: auto;
-  }
+  html[lang="ar"] .nav-menu{right: 0;left: auto;}
   
-  html[dir="rtl"] .nav-menu a,
+  .nav-menu a,
   html[lang="he"] .nav-menu a,
-  html[lang="ar"] .nav-menu a {
-    text-align: right;
-  }
+  html[lang="ar"] .nav-menu a{text-align: right;}
 }
 
 /* ============================================
@@ -6082,3 +5970,311 @@ body.accessibility-widget-visible ._access-menu {
     display: none !important;
   }
 }
+
+/* ============================================
+   DIRECTION OVERRIDE STYLES
+   Only set direction property, NOT text-align
+   This preserves centered elements
+   ============================================ */
+
+/* Base direction for LTR */
+html[dir="ltr"], html[dir="ltr"] body {
+  direction: ltr !important;
+}
+
+html[dir="ltr"] main,
+html[dir="ltr"] article,
+html[dir="ltr"] section,
+html[dir="ltr"] .content,
+html[dir="ltr"] .container,
+html[dir="ltr"] .wrapper {
+  direction: ltr !important;
+}
+
+/* ONLY apply text-align to legal page content that needs LTR alignment */
+html[dir="ltr"] .legal-content,
+html[dir="ltr"] .terms-content,
+html[dir="ltr"] .privacy-content,
+html[dir="ltr"] .legal-content p,
+html[dir="ltr"] .terms-content p,
+html[dir="ltr"] .privacy-content p,
+html[dir="ltr"] .legal-content li,
+html[dir="ltr"] .terms-content li,
+html[dir="ltr"] .privacy-content li {
+  direction: ltr !important;
+  text-align: left !important;
+}
+
+/* Base direction for RTL */
+html[dir="rtl"], html[dir="rtl"] body {
+  direction: rtl !important;
+}
+
+html[dir="rtl"] main,
+html[dir="rtl"] article,
+html[dir="rtl"] section,
+html[dir="rtl"] .content,
+html[dir="rtl"] .container,
+html[dir="rtl"] .wrapper {
+  direction: rtl !important;
+}
+
+/* ONLY apply text-align to legal page content that needs RTL alignment */
+.legal-content,
+html[dir="rtl"] .terms-content,
+html[dir="rtl"] .privacy-content,
+html[dir="rtl"] .legal-content p,
+html[dir="rtl"] .terms-content p,
+html[dir="rtl"] .privacy-content p,
+html[dir="rtl"] .legal-content li,
+html[dir="rtl"] .terms-content li,
+html[dir="rtl"] .privacy-content li{text-align: right !important;}html[dir="rtl"] .legal-content,
+html[dir="rtl"] .terms-content,
+html[dir="rtl"] .privacy-content,
+html[dir="rtl"] .legal-content p,
+html[dir="rtl"] .terms-content p,
+html[dir="rtl"] .privacy-content p,
+html[dir="rtl"] .legal-content li,
+html[dir="rtl"] .terms-content li,
+html[dir="rtl"] .privacy-content li{direction: rtl !important;}
+
+/* ============================================
+   V2 NAVIGATION PRESERVATION
+   CRITICAL: Do NOT set direction on nav/header flex containers!
+   Changing direction on flex containers reverses the visual order of items,
+   breaking V2 site layouts that were designed for a specific direction.
+   
+   The dir attribute on <html> handles text direction globally.
+   Original site CSS handles all navigation layout.
+   ============================================ */
+
+/* ============================================
+   V2 SAFE: Navigation layout preservation
+   Do NOT set direction on nav elements - it breaks flex layouts!
+   The dir attribute on <html> handles text direction.
+   Original site CSS handles navigation layout.
+   ============================================ */
+
+/* No direction overrides on navigation - preserve original V2 layouts */
+
+/* Language Switcher Container - Fixed Position */
+.zappy-lang-switcher-container {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  z-index: 9999;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* RTL: Move to left side */
+.zappy-lang-switcher-container{right: auto;left: 12px;}
+
+/* Language Switcher Styles */
+.lang-switcher {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Language switcher positioning - minimal, only gap spacing */
+/* NOTE: Removed margin-left:auto rules that broke V2 layouts */
+/* V2 layouts handle positioning via flexbox, we just add small gap */
+header .lang-switcher,
+nav .lang-switcher,
+.navbar .lang-switcher {
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+.lang-switcher-current {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  color: inherit;
+  transition: opacity 0.2s ease;
+}
+
+.lang-switcher-current:hover {
+  opacity: 0.7;
+}
+
+.lang-switcher-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 6px;
+  min-width: 150px;
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: all 0.2s ease;
+  overflow: hidden;
+}
+
+.lang-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px 16px;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
+  transition: background 0.15s ease;
+}
+
+.lang-option{text-align: right;}
+
+.lang-switcher-dropdown{right: auto;left: 0;}
+
+.lang-option:hover {
+  background: #f5f5f5;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .zappy-lang-switcher-container {
+    top: 8px;
+    right: 8px;
+  }
+  
+  .zappy-lang-switcher-container{right: auto;left: 8px;}
+  
+  .lang-switcher-current {
+    padding: 6px;
+  }
+  
+  .lang-option {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+  
+  /* FIX: Prevent lang-switcher-dropdown from extending past viewport in RTL mobile */
+  /* The dropdown was causing horizontal overflow with left: 0 in RTL */
+  .lang-switcher-dropdown{left: auto !important;right: 0 !important;}
+}
+
+/* ===========================================
+   RTL MOBILE HORIZONTAL OVERFLOW FIX
+   Prevents left whitespace gap in RTL mobile
+   caused by elements extending past viewport
+   =========================================== */
+
+/* Prevent horizontal scroll on RTL pages */
+,
+html[dir="rtl"] body{overflow-x: hidden !important;max-width: 100vw !important;}
+
+/* Ensure carousel containers clip overflow to prevent horizontal scroll */
+.zappy-carousel-container,
+.zappy-carousel-wrapper,
+.benefits-section,
+.testimonials-section,
+[class*="carousel"] {
+  overflow-x: hidden !important;
+}
+
+/* Ensure lang-switcher parent clips its positioned children */
+.lang-switcher {
+  overflow: visible; /* Keep visible for dropdown to show */
+}
+
+/* ===========================================
+   MOBILE NAV BUTTON POSITIONING
+   Default (LTR): hamburger LEFT, phone RIGHT
+   RTL: hamburger RIGHT, phone LEFT (mirrored)
+   =========================================== */
+@media (max-width: 768px) {
+  /* DEFAULT positioning for mobile nav buttons */
+  /* This ensures hamburger LEFT, phone RIGHT for LTR pages */
+  .mobile-toggle {
+    position: absolute !important;
+    left: 15px !important;
+    right: auto !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+  }
+  
+  .phone-header-btn {
+    position: absolute !important;
+    right: 15px !important;
+    left: auto !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+  }
+  
+  /* Default mobile menu slides from LEFT */
+  .nav-menu {
+    left: 0 !important;
+    right: auto !important;
+  }
+  
+  /* RTL lang-switcher dropdown constraint */
+  .lang-switcher{position: relative;}
+  
+  .lang-switcher-dropdown{left: auto !important;right: 0 !important;max-width: calc(100vw - 20px);}
+  
+  /* ===========================================
+     RTL MOBILE NAV BUTTON POSITIONING
+     In RTL: hamburger RIGHT, phone LEFT (mirror of LTR)
+     =========================================== */
+  .mobile-toggle,
+  html[lang="he"] .mobile-toggle,
+  html[lang="ar"] .mobile-toggle{left: auto !important;right: 15px !important;}
+  
+  .phone-header-btn,
+  html[lang="he"] .phone-header-btn,
+  html[lang="ar"] .phone-header-btn{left: 15px !important;right: auto !important;}
+  
+  /* RTL mobile menu slides from RIGHT */
+  .nav-menu,
+  html[lang="he"] .nav-menu,
+  html[lang="ar"] .nav-menu{left: auto !important;right: 0 !important;}
+}
+
+
+
+/* ========== RTL MOBILE NAVBAR FIX (zappy-rtl-mobile-fix) ========== */
+/* High-specificity rules to ensure RTL positioning wins over any [lang="en"] conflicts */
+/* For RTL sites: hamburger on RIGHT, phone on LEFT (mirror of LTR layout) */
+
+@media (max-width: 768px) {
+  /* RTL Mobile Toggle (hamburger) - positioned on RIGHT */
+  /* Using multiple parent selectors for higher specificity */
+  .navbar .mobile-toggle,
+  html[dir="rtl"] nav .mobile-toggle,
+  html[dir="rtl"] header .mobile-toggle,
+  html[dir="rtl"] .nav-container .mobile-toggle,
+  html[dir="rtl"] .mobile-toggle{left: auto !important;right: 15px !important;}
+  
+  /* RTL Phone Button - positioned on LEFT */
+  .navbar .phone-header-btn,
+  html[dir="rtl"] nav .phone-header-btn,
+  html[dir="rtl"] header .phone-header-btn,
+  html[dir="rtl"] .nav-container .phone-header-btn,
+  html[dir="rtl"] .phone-header-btn{left: 15px !important;right: auto !important;}
+  
+  /* RTL Mobile Menu - slides from RIGHT */
+  .navbar .nav-menu,
+  html[dir="rtl"] nav .nav-menu,
+  html[dir="rtl"] header .nav-menu,
+  html[dir="rtl"] .nav-container .nav-menu,
+  html[dir="rtl"] .nav-menu{left: auto !important;right: 0 !important;}
+  
+  /* RTL Mobile Menu Links - text align right */
+  .nav-menu a,
+  html[dir="rtl"] .nav-menu li{text-align: right !important;}
+}
+
+/* ========== END RTL MOBILE NAVBAR FIX ========== */

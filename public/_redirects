@@ -8,6 +8,16 @@
 /accessibility  /accessibility.html  200
 /terms  /terms.html  200
 
+# Language slug rewrites for SEO
+/en  /en/index.html  200
+/en/programs  /en/programs.html  200
+/en/rentals  /en/rentals.html  200
+/en/contact  /en/contact.html  200
+/en/privacy  /en/privacy.html  200
+/en/accessibility  /en/accessibility.html  200
+/en/terms  /en/terms.html  200
+/en  /en/index.html  200
+
 # Legal pages - redirect old .html URLs to friendly URLs
 /privacy.html  /privacy  301
 /accessibility.html  /accessibility  301
