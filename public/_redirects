@@ -7,6 +7,11 @@
 /privacy  /privacy.html  200
 /accessibility  /accessibility.html  200
 /terms  /terms.html  200
+/blog  /blog.html  200
+/blog/reading-the-ocean  /blog/reading-the-ocean.html  200
+/blog/popup-basics  /blog/popup-basics.html  200
+/blog/surf-safety-rules  /blog/surf-safety-rules.html  200
+/blog/choosing-surfboard  /blog/choosing-surfboard.html  200
 
 # Language slug rewrites for SEO
 /en  /en/index.html  200
@@ -16,6 +21,11 @@
 /en/privacy  /en/privacy.html  200
 /en/accessibility  /en/accessibility.html  200
 /en/terms  /en/terms.html  200
+/en/blog  /en/blog.html  200
+/en/blog/reading-the-ocean  /en/blog-reading-the-ocean.html  200
+/en/blog/popup-basics  /en/blog-popup-basics.html  200
+/en/blog/surf-safety-rules  /en/blog-surf-safety-rules.html  200
+/en/blog/choosing-surfboard  /en/blog-choosing-surfboard.html  200
 /en  /en/index.html  200
 
 # Legal pages - redirect old .html URLs to friendly URLs
