@@ -6038,24 +6038,68 @@ html[dir="rtl"] .legal-content li,
 html[dir="rtl"] .terms-content li,
 html[dir="rtl"] .privacy-content li{direction: rtl !important;}
 
+
 /* ============================================
-   V2 NAVIGATION PRESERVATION
-   CRITICAL: Do NOT set direction on nav/header flex containers!
-   Changing direction on flex containers reverses the visual order of items,
-   breaking V2 site layouts that were designed for a specific direction.
+   V2 NAVIGATION FIX
+   CRITICAL: For V2 sites created in RTL (Hebrew), the nav elements
+   inherit direction:rtl from the body. This reverses how flex order
+   is interpreted. For LTR pages, we MUST set direction:ltr on nav
+   containers to make the flex order work correctly.
    
-   The dir attribute on <html> handles text direction globally.
-   Original site CSS handles all navigation layout.
+   This section is ONLY included for V2 sites (detected by nav-right-group
+   or nav-cta-container classes) to avoid affecting V1 site layouts.
    ============================================ */
 
-/* ============================================
-   V2 SAFE: Navigation layout preservation
-   Do NOT set direction on nav elements - it breaks flex layouts!
-   The dir attribute on <html> handles text direction.
-   Original site CSS handles navigation layout.
-   ============================================ */
+/* Fix V2 navbar layout for LTR pages */
+/* Direction must apply to all screen sizes, but flex-direction: row is desktop-only */
+html[dir="ltr"] header,
+html[dir="ltr"] nav,
+html[dir="ltr"] .navbar,
+html[dir="ltr"] .nav-container {
+  direction: ltr !important;
+}
 
-/* No direction overrides on navigation - preserve original V2 layouts */
+html[dir="ltr"] .nav-right-group {
+  direction: ltr !important;
+  order: -1 !important;
+}
+
+html[dir="ltr"] .nav-cta-container {
+  direction: ltr !important;
+  order: 1 !important;
+  margin-left: auto !important;
+}
+
+html[dir="ltr"] .nav-menu,
+html[dir="ltr"] #navMenu {
+  direction: ltr !important;
+}
+
+html[dir="ltr"] .nav-brand {
+  direction: ltr !important;
+  order: -1 !important;
+}
+
+/* DESKTOP ONLY: Horizontal flex layout for navbar elements */
+@media (min-width: 769px) {
+  html[dir="ltr"] header,
+  html[dir="ltr"] nav,
+  html[dir="ltr"] .navbar,
+  html[dir="ltr"] .nav-container {
+    flex-direction: row !important;
+  }
+  
+  html[dir="ltr"] .nav-right-group,
+  html[dir="ltr"] .nav-cta-container {
+    flex-direction: row !important;
+  }
+  
+  html[dir="ltr"] .nav-menu,
+  html[dir="ltr"] #navMenu {
+    flex-direction: row !important;
+  }
+}
+
 
 /* Language Switcher Container - Fixed Position */
 .zappy-lang-switcher-container {
@@ -6103,9 +6147,24 @@ nav .lang-switcher,
   opacity: 0.7;
 }
 
-.lang-switcher-dropdown {
-  position: absolute;
-  top: 100%;
+/* ===========================================
+   LANGUAGE DROPDOWN POSITIONING
+   CRITICAL: position: absolute !important overrides any
+   mobile responsive CSS that resets absolute positioning
+   to relative. The dropdown MUST be absolutely positioned
+   relative to its parent .lang-switcher.
+   
+   HIGH SPECIFICITY SELECTORS needed to override:
+   [style*="position: absolute"]:not(...) { position: relative !important }
+   That selector has specificity ~0,4,0 so we need 0,5,0+ to win
+   =========================================== */
+.lang-switcher-dropdown,
+.lang-switcher .lang-switcher-dropdown,
+div.lang-switcher-dropdown,
+.nav-cta-container .lang-switcher .lang-switcher-dropdown,
+.navbar .nav-cta-container .lang-switcher-dropdown {
+  position: absolute !important;
+  top: 100% !important;
   right: 0;
   margin-top: 6px;
   min-width: 150px;
@@ -6118,6 +6177,19 @@ nav .lang-switcher,
   transform: translateY(-8px);
   transition: all 0.2s ease;
   overflow: hidden;
+  z-index: 1002 !important;
+}
+
+/* Ultra-high specificity override for problematic mobile responsive CSS */
+/* Targets the exact same attribute selector pattern but for our dropdown */
+.lang-switcher-dropdown[style*="position: absolute"],
+.lang-switcher-dropdown[style*="position:absolute"],
+div.lang-switcher-dropdown[style],
+.lang-switcher > .lang-switcher-dropdown[style] {
+  position: absolute !important;
+  top: 100% !important;
+  left: auto;
+  right: 0;
 }
 
 .lang-option {
@@ -6192,32 +6264,93 @@ html[dir="rtl"] body{overflow-x: hidden !important;max-width: 100vw !important;}
 
 /* ===========================================
    MOBILE NAV BUTTON POSITIONING
-   Default (LTR): hamburger LEFT, phone RIGHT
-   RTL: hamburger RIGHT, phone LEFT (mirrored)
+   CSS handles positioning based on html[dir] attribute.
+   This allows dynamic RTL/LTR switching without inline styles.
+   
+   LTR (default): hamburger LEFT (20px), phone RIGHT (20px)
+   RTL: hamburger RIGHT (20px), phone LEFT (20px) - mirrored
    =========================================== */
 @media (max-width: 768px) {
-  /* DEFAULT positioning for mobile nav buttons */
-  /* This ensures hamburger LEFT, phone RIGHT for LTR pages */
-  .mobile-toggle {
-    position: absolute !important;
-    left: 15px !important;
-    right: auto !important;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-  }
-  
+  /* Base positioning and visibility for mobile nav buttons */
+  /* CRITICAL: display: flex overrides any desktop display: none rules */
+  .mobile-toggle,
   .phone-header-btn {
+    display: flex !important;
     position: absolute !important;
-    right: 15px !important;
-    left: auto !important;
     top: 50% !important;
     transform: translateY(-50%) !important;
+    z-index: 1001 !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 44px !important;
+    height: 44px !important;
+    background: none !important;
+    border: none !important;
+    cursor: pointer !important;
   }
   
-  /* Default mobile menu slides from LEFT */
-  .nav-menu {
+  /* Phone button color - use accent color for visibility */
+  .phone-header-btn {
+    color: var(--accent, #f59e0b) !important;
+  }
+  
+  .phone-header-btn svg {
+    width: 24px !important;
+    height: 24px !important;
+    fill: currentColor !important;
+  }
+  
+  /* LTR positioning (default) - hamburger LEFT, phone RIGHT */
+  html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .mobile-toggle,
+  html[dir="ltr"] .mobile-toggle {
+    left: 20px !important;
+    right: auto !important;
+  }
+  
+  html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .phone-header-btn,
+  html[dir="ltr"] .phone-header-btn {
+    right: 20px !important;
+    left: auto !important;
+  }
+  
+  /* LTR mobile menu slides from LEFT */
+  html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .nav-menu,
+  html[dir="ltr"] .nav-menu {
     left: 0 !important;
     right: auto !important;
+  }
+  
+  /* ===========================================
+     MOBILE NAV MENU - VERTICAL LAYOUT FIX
+     CRITICAL: Override any desktop flex-direction: row rules
+     The mobile menu MUST stack vertically (column), not horizontally (row)
+     =========================================== */
+  html[dir="ltr"] .nav-menu,
+  html[dir="ltr"] .nav-menu.active,
+  html[dir="ltr"] #navMenu,
+  html[dir="ltr"] #navMenu.active,
+  html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .nav-menu,
+  html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .nav-menu.active {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+  
+  /* RTL mobile menu - also vertical layout */
+  .nav-menu,
+  html[dir="rtl"] .nav-menu.active,
+  html[dir="rtl"] #navMenu,
+  html[dir="rtl"] #navMenu.active,
+  html[lang="he"] .nav-menu,
+  html[lang="he"] .nav-menu.active,
+  html[lang="ar"] .nav-menu,
+  html[lang="ar"] .nav-menu.active{flex-direction: column !important;align-items: stretch !important;}
+  
+  /* LTR mobile menu text alignment - left aligned */
+  html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .nav-menu li,
+  html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .nav-menu a,
+  html[dir="ltr"] .nav-menu li,
+  html[dir="ltr"] .nav-menu a {
+    text-align: left !important;
   }
   
   /* RTL lang-switcher dropdown constraint */
@@ -6231,16 +6364,109 @@ html[dir="rtl"] body{overflow-x: hidden !important;max-width: 100vw !important;}
      =========================================== */
   .mobile-toggle,
   html[lang="he"] .mobile-toggle,
-  html[lang="ar"] .mobile-toggle{left: auto !important;right: 15px !important;}
+  html[lang="ar"] .mobile-toggle{left: auto !important;right: 20px !important;}
   
   .phone-header-btn,
   html[lang="he"] .phone-header-btn,
-  html[lang="ar"] .phone-header-btn{left: 15px !important;right: auto !important;}
+  html[lang="ar"] .phone-header-btn{left: 20px !important;right: auto !important;}
   
   /* RTL mobile menu slides from RIGHT */
   .nav-menu,
   html[lang="he"] .nav-menu,
   html[lang="ar"] .nav-menu{left: auto !important;right: 0 !important;}
+  
+  /* ===========================================
+     V2 MOBILE LANGUAGE SWITCHER FIX
+     V2 sites hide .nav-cta-container on mobile but we need
+     the language switcher to remain visible. Position it
+     between the phone button and the hamburger menu.
+     =========================================== */
+  .nav-cta-container {
+    display: flex !important;
+    position: absolute !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: auto !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    z-index: 1001 !important;
+  }
+  
+  /* Hide CTA button inside container on mobile */
+  .nav-cta-container .nav-cta-btn,
+  .nav-cta-container > a:not(.lang-option):not(.lang-switcher-current) {
+    display: none !important;
+  }
+  
+  /* Keep language switcher visible and compact */
+  .nav-cta-container .lang-switcher {
+    display: flex !important;
+    margin: 0 !important;
+    width: auto !important;
+    position: relative !important;
+  }
+  
+  /* ===========================================
+     MOBILE LANGUAGE DROPDOWN POSITIONING FIX
+     CRITICAL: Override the mobile responsive CSS that sets
+     [style*="position: absolute"] { position: relative !important }
+     The dropdown MUST use position: absolute to appear below the button.
+     =========================================== */
+  .lang-switcher-dropdown,
+  .nav-cta-container .lang-switcher-dropdown,
+  .lang-switcher .lang-switcher-dropdown,
+  div.lang-switcher-dropdown,
+  [class*="lang-switcher"] .lang-switcher-dropdown {
+    position: absolute !important;
+    top: 100% !important;
+    margin-top: 8px !important;
+    min-width: 140px !important;
+    background: white !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+    z-index: 1002 !important;
+    /* Override any transform that might affect positioning */
+    transform: none !important;
+  }
+  
+  /* When dropdown is visible, ensure positioning is correct */
+  .lang-switcher-dropdown[style*="visibility: visible"],
+  .lang-switcher-dropdown[style*="opacity: 1"] {
+    position: absolute !important;
+    top: 100% !important;
+  }
+  
+  /* LTR: dropdown aligns to left */
+  html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .lang-switcher-dropdown,
+  html[dir="ltr"] .lang-switcher-dropdown {
+    left: 0 !important;
+    right: auto !important;
+  }
+  
+  /* RTL: dropdown aligns to right */
+  .lang-switcher-dropdown,
+  html[lang="he"] .lang-switcher-dropdown,
+  html[lang="ar"] .lang-switcher-dropdown{right: 0 !important;left: auto !important;}
+  
+  /* LTR: position near hamburger (which is at left: 20px), to its right */
+  html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .nav-cta-container,
+  html[dir="ltr"] .nav-cta-container {
+    left: 45px !important;
+    right: auto !important;
+  }
+  
+  /* RTL: position near hamburger (which is at right: 20px), to its left */
+  .nav-cta-container,
+  html[lang="he"] .nav-cta-container,
+  html[lang="ar"] .nav-cta-container{right: 45px !important;left: auto !important;}
+  
+  /* Language switcher preserves its inline color/fill set during generation */
 }
 
 

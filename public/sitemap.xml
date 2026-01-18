@@ -3,7 +3,7 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://ruach-bagalim.zappy5.app</loc>
-    <lastmod>2026-01-17</lastmod>
+    <lastmod>2026-01-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="he" href="https://ruach-bagalim.zappy5.app" />
@@ -12,7 +12,7 @@
   </url>
   <url>
     <loc>https://ruach-bagalim.zappy5.app/en</loc>
-    <lastmod>2026-01-17</lastmod>
+    <lastmod>2026-01-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="he" href="https://ruach-bagalim.zappy5.app" />
@@ -21,7 +21,7 @@
   </url>
   <url>
     <loc>https://ruach-bagalim.zappy5.app/programs</loc>
-    <lastmod>2026-01-17</lastmod>
+    <lastmod>2026-01-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="he" href="https://ruach-bagalim.zappy5.app/programs" />
@@ -30,7 +30,7 @@
   </url>
   <url>
     <loc>https://ruach-bagalim.zappy5.app/en/programs</loc>
-    <lastmod>2026-01-17</lastmod>
+    <lastmod>2026-01-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="he" href="https://ruach-bagalim.zappy5.app/programs" />
@@ -39,7 +39,7 @@
   </url>
   <url>
     <loc>https://ruach-bagalim.zappy5.app/rentals</loc>
-    <lastmod>2026-01-17</lastmod>
+    <lastmod>2026-01-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="he" href="https://ruach-bagalim.zappy5.app/rentals" />
@@ -48,7 +48,7 @@
   </url>
   <url>
     <loc>https://ruach-bagalim.zappy5.app/en/rentals</loc>
-    <lastmod>2026-01-17</lastmod>
+    <lastmod>2026-01-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="he" href="https://ruach-bagalim.zappy5.app/rentals" />
@@ -57,7 +57,7 @@
   </url>
   <url>
     <loc>https://ruach-bagalim.zappy5.app/contact</loc>
-    <lastmod>2026-01-17</lastmod>
+    <lastmod>2026-01-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="he" href="https://ruach-bagalim.zappy5.app/contact" />
@@ -66,7 +66,7 @@
   </url>
   <url>
     <loc>https://ruach-bagalim.zappy5.app/en/contact</loc>
-    <lastmod>2026-01-17</lastmod>
+    <lastmod>2026-01-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="he" href="https://ruach-bagalim.zappy5.app/contact" />
@@ -74,98 +74,8 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ruach-bagalim.zappy5.app/contact" />
   </url>
   <url>
-    <loc>https://ruach-bagalim.zappy5.app/blog</loc>
-    <lastmod>2026-01-17</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="he" href="https://ruach-bagalim.zappy5.app/blog" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://ruach-bagalim.zappy5.app/en/blog" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ruach-bagalim.zappy5.app/blog" />
-  </url>
-  <url>
-    <loc>https://ruach-bagalim.zappy5.app/en/blog</loc>
-    <lastmod>2026-01-17</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="he" href="https://ruach-bagalim.zappy5.app/blog" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://ruach-bagalim.zappy5.app/en/blog" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ruach-bagalim.zappy5.app/blog" />
-  </url>
-  <url>
-    <loc>https://ruach-bagalim.zappy5.app/blog/reading-the-ocean</loc>
-    <lastmod>2026-01-17</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="he" href="https://ruach-bagalim.zappy5.app/blog/reading-the-ocean" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://ruach-bagalim.zappy5.app/en/blog/reading-the-ocean" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ruach-bagalim.zappy5.app/blog/reading-the-ocean" />
-  </url>
-  <url>
-    <loc>https://ruach-bagalim.zappy5.app/en/blog/reading-the-ocean</loc>
-    <lastmod>2026-01-17</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="he" href="https://ruach-bagalim.zappy5.app/blog/reading-the-ocean" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://ruach-bagalim.zappy5.app/en/blog/reading-the-ocean" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ruach-bagalim.zappy5.app/blog/reading-the-ocean" />
-  </url>
-  <url>
-    <loc>https://ruach-bagalim.zappy5.app/blog/popup-basics</loc>
-    <lastmod>2026-01-17</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="he" href="https://ruach-bagalim.zappy5.app/blog/popup-basics" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://ruach-bagalim.zappy5.app/en/blog/popup-basics" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ruach-bagalim.zappy5.app/blog/popup-basics" />
-  </url>
-  <url>
-    <loc>https://ruach-bagalim.zappy5.app/en/blog/popup-basics</loc>
-    <lastmod>2026-01-17</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="he" href="https://ruach-bagalim.zappy5.app/blog/popup-basics" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://ruach-bagalim.zappy5.app/en/blog/popup-basics" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ruach-bagalim.zappy5.app/blog/popup-basics" />
-  </url>
-  <url>
-    <loc>https://ruach-bagalim.zappy5.app/blog/surf-safety-rules</loc>
-    <lastmod>2026-01-17</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="he" href="https://ruach-bagalim.zappy5.app/blog/surf-safety-rules" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://ruach-bagalim.zappy5.app/en/blog/surf-safety-rules" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ruach-bagalim.zappy5.app/blog/surf-safety-rules" />
-  </url>
-  <url>
-    <loc>https://ruach-bagalim.zappy5.app/en/blog/surf-safety-rules</loc>
-    <lastmod>2026-01-17</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="he" href="https://ruach-bagalim.zappy5.app/blog/surf-safety-rules" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://ruach-bagalim.zappy5.app/en/blog/surf-safety-rules" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ruach-bagalim.zappy5.app/blog/surf-safety-rules" />
-  </url>
-  <url>
-    <loc>https://ruach-bagalim.zappy5.app/blog/choosing-surfboard</loc>
-    <lastmod>2026-01-17</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="he" href="https://ruach-bagalim.zappy5.app/blog/choosing-surfboard" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://ruach-bagalim.zappy5.app/en/blog/choosing-surfboard" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ruach-bagalim.zappy5.app/blog/choosing-surfboard" />
-  </url>
-  <url>
-    <loc>https://ruach-bagalim.zappy5.app/en/blog/choosing-surfboard</loc>
-    <lastmod>2026-01-17</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="he" href="https://ruach-bagalim.zappy5.app/blog/choosing-surfboard" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://ruach-bagalim.zappy5.app/en/blog/choosing-surfboard" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ruach-bagalim.zappy5.app/blog/choosing-surfboard" />
-  </url>
-  <url>
     <loc>https://ruach-bagalim.zappy5.app/privacy</loc>
-    <lastmod>2026-01-17</lastmod>
+    <lastmod>2026-01-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="he" href="https://ruach-bagalim.zappy5.app/privacy" />
@@ -174,7 +84,7 @@
   </url>
   <url>
     <loc>https://ruach-bagalim.zappy5.app/en/privacy</loc>
-    <lastmod>2026-01-17</lastmod>
+    <lastmod>2026-01-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="he" href="https://ruach-bagalim.zappy5.app/privacy" />
@@ -183,7 +93,7 @@
   </url>
   <url>
     <loc>https://ruach-bagalim.zappy5.app/terms</loc>
-    <lastmod>2026-01-17</lastmod>
+    <lastmod>2026-01-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="he" href="https://ruach-bagalim.zappy5.app/terms" />
@@ -192,7 +102,7 @@
   </url>
   <url>
     <loc>https://ruach-bagalim.zappy5.app/en/terms</loc>
-    <lastmod>2026-01-17</lastmod>
+    <lastmod>2026-01-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="he" href="https://ruach-bagalim.zappy5.app/terms" />
@@ -201,7 +111,7 @@
   </url>
   <url>
     <loc>https://ruach-bagalim.zappy5.app/accessibility</loc>
-    <lastmod>2026-01-17</lastmod>
+    <lastmod>2026-01-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="he" href="https://ruach-bagalim.zappy5.app/accessibility" />
@@ -210,7 +120,7 @@
   </url>
   <url>
     <loc>https://ruach-bagalim.zappy5.app/en/accessibility</loc>
-    <lastmod>2026-01-17</lastmod>
+    <lastmod>2026-01-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="he" href="https://ruach-bagalim.zappy5.app/accessibility" />

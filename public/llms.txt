@@ -1,6 +1,4 @@
-# רוח בגלים — Generative Engine Optimization Map
-
-> A ספורט ופנאי business.
+# Business — Generative Engine Optimization Map
 
 ---
 
@@ -17,26 +15,6 @@ https://ruach-bagalim.zappy5.app/rentals
 
 ### Contact
 https://ruach-bagalim.zappy5.app/contact
-
-### בלוג הגלישה | רוח בגלים
-https://ruach-bagalim.zappy5.app/blog
-רוח בגלים - בלוג הגלישה | רוח בגלים
-
-### הים
-https://ruach-bagalim.zappy5.app/blog/reading-the-ocean
-מדריך פשוט לקריאת תנאי הים: זיהוי סטים, זרמי סחף, ערוץ יציאה ובחירת נקודת כניסה בטוחה לגולשים בכל רמה.
-
-### פופ-אפ
-https://ruach-bagalim.zappy5.app/blog/popup-basics
-טכניקה נקייה לקימה על הגל: מיקום ידיים, מסלול רגליים, מבט קדימה ותיקונים נפוצים למתחילים ולמתקדמים.
-
-### בטיחות
-https://ruach-bagalim.zappy5.app/blog/surf-safety-rules
-הבסיס שמונע תאונות: זכות קדימה, שמירת מרחק, התנהלות בליינאפ, וטעויות נפוצות שכדאי לעצור בזמן.
-
-### גלשן
-https://ruach-bagalim.zappy5.app/blog/choosing-surfboard
-מדריך בחירה ברור: למה נפח חשוב יותר ממה שנדמה, איך להתאים אורך/רוחב לרמה ולמשקל, ומה לשאול לפני שקונים.
 
 ## Legal & Policy
 
@@ -56,15 +34,7 @@ Information about WCAG compliance and accessibility features.
 
 # Business Context (for LLM understanding)
 
-## About רוח בגלים
-רוח בגלים is a business in the ספורט ופנאי industry.
-
-## Target Audience
-ילדים ומבוגרים מגיל 10+ שרוצים ללמוד או להשתפר בגלישה
-
-## Industry
-ספורט ופנאי
-
+## About Business
 ---
 
 # Additional Resources
