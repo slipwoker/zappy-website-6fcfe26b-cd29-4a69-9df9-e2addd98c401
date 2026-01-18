@@ -126,7 +126,543 @@
     <script src="https://cdn.jsdelivr.net/gh/mickidum/acc_toolbar/acctoolbar/acctoolbar.min.js"></script>
 
     <!-- Iconify for cross-platform flag icons -->
-    <script src="https://code.iconify.design/3/3.1.1/iconify.min.js"></script>
+    <script src="https://code.iconify.design/3/3.1.1/iconify.min.js"></script><style id="zappy-multilang-css">
+/* ============================================
+   DIRECTION OVERRIDE STYLES
+   Only set direction property, NOT text-align
+   This preserves centered elements
+   ============================================ */
+
+/* Base direction for LTR */
+html[dir="ltr"], html[dir="ltr"] body {
+  direction: ltr !important;
+}
+
+html[dir="ltr"] main,
+html[dir="ltr"] article,
+html[dir="ltr"] section,
+html[dir="ltr"] .content,
+html[dir="ltr"] .container,
+html[dir="ltr"] .wrapper {
+  direction: ltr !important;
+}
+
+/* ONLY apply text-align to legal page content that needs LTR alignment */
+html[dir="ltr"] .legal-content,
+html[dir="ltr"] .terms-content,
+html[dir="ltr"] .privacy-content,
+html[dir="ltr"] .legal-content p,
+html[dir="ltr"] .terms-content p,
+html[dir="ltr"] .privacy-content p,
+html[dir="ltr"] .legal-content li,
+html[dir="ltr"] .terms-content li,
+html[dir="ltr"] .privacy-content li {
+  direction: ltr !important;
+  text-align: left !important;
+}
+
+/* Base direction for RTL */
+html[dir="rtl"], html[dir="rtl"] body {
+  direction: rtl !important;
+}
+
+html[dir="rtl"] main,
+html[dir="rtl"] article,
+html[dir="rtl"] section,
+html[dir="rtl"] .content,
+html[dir="rtl"] .container,
+html[dir="rtl"] .wrapper {
+  direction: rtl !important;
+}
+
+/* ONLY apply text-align to legal page content that needs RTL alignment */
+html[dir="rtl"] .legal-content,
+html[dir="rtl"] .terms-content,
+html[dir="rtl"] .privacy-content,
+html[dir="rtl"] .legal-content p,
+html[dir="rtl"] .terms-content p,
+html[dir="rtl"] .privacy-content p,
+html[dir="rtl"] .legal-content li,
+html[dir="rtl"] .terms-content li,
+html[dir="rtl"] .privacy-content li {
+  direction: rtl !important;
+  text-align: right !important;
+}
+
+
+/* ============================================
+   V2 NAVIGATION FIX
+   CRITICAL: For V2 sites created in RTL (Hebrew), the nav elements
+   inherit direction:rtl from the body. This reverses how flex order
+   is interpreted. For LTR pages, we MUST set direction:ltr on nav
+   containers to make the flex order work correctly.
+   
+   This section is ONLY included for V2 sites (detected by nav-right-group
+   or nav-cta-container classes) to avoid affecting V1 site layouts.
+   ============================================ */
+
+/* Fix V2 navbar layout for LTR pages */
+/* Direction must apply to all screen sizes, but flex-direction: row is desktop-only */
+html[dir="ltr"] header,
+html[dir="ltr"] nav,
+html[dir="ltr"] .navbar,
+html[dir="ltr"] .nav-container {
+  direction: ltr !important;
+}
+
+html[dir="ltr"] .nav-right-group {
+  direction: ltr !important;
+  order: -1 !important;
+}
+
+html[dir="ltr"] .nav-cta-container {
+  direction: ltr !important;
+  order: 1 !important;
+  margin-left: auto !important;
+}
+
+html[dir="ltr"] .nav-menu,
+html[dir="ltr"] #navMenu {
+  direction: ltr !important;
+}
+
+html[dir="ltr"] .nav-brand {
+  direction: ltr !important;
+  order: -1 !important;
+}
+
+/* DESKTOP ONLY: Horizontal flex layout for navbar elements */
+@media (min-width: 769px) {
+  html[dir="ltr"] header,
+  html[dir="ltr"] nav,
+  html[dir="ltr"] .navbar,
+  html[dir="ltr"] .nav-container {
+    flex-direction: row !important;
+  }
+  
+  html[dir="ltr"] .nav-right-group,
+  html[dir="ltr"] .nav-cta-container {
+    flex-direction: row !important;
+  }
+  
+  html[dir="ltr"] .nav-menu,
+  html[dir="ltr"] #navMenu {
+    flex-direction: row !important;
+  }
+}
+
+
+/* Language Switcher Container - Fixed Position */
+.zappy-lang-switcher-container {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  z-index: 9999;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* RTL: Move to left side */
+html[dir="rtl"] .zappy-lang-switcher-container {
+  right: auto;
+  left: 12px;
+}
+
+/* Language Switcher Styles */
+.lang-switcher {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Language switcher positioning - minimal, only gap spacing */
+/* NOTE: Removed margin-left:auto rules that broke V2 layouts */
+/* V2 layouts handle positioning via flexbox, we just add small gap */
+header .lang-switcher,
+nav .lang-switcher,
+.navbar .lang-switcher {
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+.lang-switcher-current {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  color: inherit;
+  transition: opacity 0.2s ease;
+}
+
+.lang-switcher-current:hover {
+  opacity: 0.7;
+}
+
+/* ===========================================
+   LANGUAGE DROPDOWN POSITIONING
+   CRITICAL: position: absolute !important overrides any
+   mobile responsive CSS that resets absolute positioning
+   to relative. The dropdown MUST be absolutely positioned
+   relative to its parent .lang-switcher.
+   
+   HIGH SPECIFICITY SELECTORS needed to override:
+   [style*="position: absolute"]:not(...) { position: relative !important }
+   That selector has specificity ~0,4,0 so we need 0,5,0+ to win
+   =========================================== */
+.lang-switcher-dropdown,
+.lang-switcher .lang-switcher-dropdown,
+div.lang-switcher-dropdown,
+.nav-cta-container .lang-switcher .lang-switcher-dropdown,
+.navbar .nav-cta-container .lang-switcher-dropdown {
+  position: absolute !important;
+  top: 100% !important;
+  right: 0;
+  margin-top: 6px;
+  min-width: 150px;
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: all 0.2s ease;
+  overflow: hidden;
+  z-index: 1002 !important;
+}
+
+/* Ultra-high specificity override for problematic mobile responsive CSS */
+/* Targets the exact same attribute selector pattern but for our dropdown */
+.lang-switcher-dropdown[style*="position: absolute"],
+.lang-switcher-dropdown[style*="position:absolute"],
+div.lang-switcher-dropdown[style],
+.lang-switcher > .lang-switcher-dropdown[style] {
+  position: absolute !important;
+  top: 100% !important;
+  left: auto;
+  right: 0;
+}
+
+.lang-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px 16px;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
+  transition: background 0.15s ease;
+}
+
+html[dir="rtl"] .lang-option {
+  text-align: right;
+}
+
+html[dir="rtl"] .lang-switcher-dropdown {
+  right: auto;
+  left: 0;
+}
+
+.lang-option:hover {
+  background: #f5f5f5;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .zappy-lang-switcher-container {
+    top: 8px;
+    right: 8px;
+  }
+  
+  html[dir="rtl"] .zappy-lang-switcher-container {
+    right: auto;
+    left: 8px;
+  }
+  
+  .lang-switcher-current {
+    padding: 6px;
+  }
+  
+  .lang-option {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+  
+  /* FIX: Prevent lang-switcher-dropdown from extending past viewport in RTL mobile */
+  /* The dropdown was causing horizontal overflow with left: 0 in RTL */
+  html[dir="rtl"] .lang-switcher-dropdown {
+    left: auto !important;
+    right: 0 !important;
+  }
+}
+
+/* ===========================================
+   RTL MOBILE HORIZONTAL OVERFLOW FIX
+   Prevents left whitespace gap in RTL mobile
+   caused by elements extending past viewport
+   =========================================== */
+
+/* Prevent horizontal scroll on RTL pages */
+html[dir="rtl"],
+html[dir="rtl"] body {
+  overflow-x: hidden !important;
+  max-width: 100vw !important;
+}
+
+/* Ensure carousel containers clip overflow to prevent horizontal scroll */
+.zappy-carousel-container,
+.zappy-carousel-wrapper,
+.benefits-section,
+.testimonials-section,
+[class*="carousel"] {
+  overflow-x: hidden !important;
+}
+
+/* Ensure lang-switcher parent clips its positioned children */
+.lang-switcher {
+  overflow: visible; /* Keep visible for dropdown to show */
+}
+
+/* ===========================================
+   MOBILE NAV BUTTON POSITIONING
+   CSS handles positioning based on html[dir] attribute.
+   This allows dynamic RTL/LTR switching without inline styles.
+   
+   LTR (default): hamburger LEFT (20px), phone RIGHT (20px)
+   RTL: hamburger RIGHT (20px), phone LEFT (20px) - mirrored
+   =========================================== */
+@media (max-width: 768px) {
+  /* Base positioning and visibility for mobile nav buttons */
+  /* CRITICAL: display: flex overrides any desktop display: none rules */
+  .mobile-toggle,
+  .phone-header-btn {
+    display: flex !important;
+    position: absolute !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    z-index: 1001 !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 44px !important;
+    height: 44px !important;
+    background: none !important;
+    border: none !important;
+    cursor: pointer !important;
+  }
+  
+  /* Phone button color - use accent color for visibility */
+  .phone-header-btn {
+    color: var(--accent, #f59e0b) !important;
+  }
+  
+  .phone-header-btn svg {
+    width: 24px !important;
+    height: 24px !important;
+    fill: currentColor !important;
+  }
+  
+  /* LTR positioning (default) - hamburger LEFT, phone RIGHT */
+  html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .mobile-toggle,
+  html[dir="ltr"] .mobile-toggle {
+    left: 20px !important;
+    right: auto !important;
+  }
+  
+  html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .phone-header-btn,
+  html[dir="ltr"] .phone-header-btn {
+    right: 20px !important;
+    left: auto !important;
+  }
+  
+  /* LTR mobile menu slides from LEFT */
+  html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .nav-menu,
+  html[dir="ltr"] .nav-menu {
+    left: 0 !important;
+    right: auto !important;
+  }
+  
+  /* ===========================================
+     MOBILE NAV MENU - VERTICAL LAYOUT FIX
+     CRITICAL: Override any desktop flex-direction: row rules
+     The mobile menu MUST stack vertically (column), not horizontally (row)
+     =========================================== */
+  html[dir="ltr"] .nav-menu,
+  html[dir="ltr"] .nav-menu.active,
+  html[dir="ltr"] #navMenu,
+  html[dir="ltr"] #navMenu.active,
+  html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .nav-menu,
+  html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .nav-menu.active {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+  
+  /* RTL mobile menu - also vertical layout */
+  html[dir="rtl"] .nav-menu,
+  html[dir="rtl"] .nav-menu.active,
+  html[dir="rtl"] #navMenu,
+  html[dir="rtl"] #navMenu.active,
+  html[lang="he"] .nav-menu,
+  html[lang="he"] .nav-menu.active,
+  html[lang="ar"] .nav-menu,
+  html[lang="ar"] .nav-menu.active {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+  
+  /* LTR mobile menu text alignment - left aligned */
+  html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .nav-menu li,
+  html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .nav-menu a,
+  html[dir="ltr"] .nav-menu li,
+  html[dir="ltr"] .nav-menu a {
+    text-align: left !important;
+  }
+  
+  /* RTL lang-switcher dropdown constraint */
+  html[dir="rtl"] .lang-switcher {
+    position: relative;
+  }
+  
+  html[dir="rtl"] .lang-switcher-dropdown {
+    left: auto !important;
+    right: 0 !important;
+    max-width: calc(100vw - 20px);
+  }
+  
+  /* ===========================================
+     RTL MOBILE NAV BUTTON POSITIONING
+     In RTL: hamburger RIGHT, phone LEFT (mirror of LTR)
+     =========================================== */
+  html[dir="rtl"] .mobile-toggle,
+  html[lang="he"] .mobile-toggle,
+  html[lang="ar"] .mobile-toggle {
+    left: auto !important;
+    right: 20px !important;
+  }
+  
+  html[dir="rtl"] .phone-header-btn,
+  html[lang="he"] .phone-header-btn,
+  html[lang="ar"] .phone-header-btn {
+    left: 20px !important;
+    right: auto !important;
+  }
+  
+  /* RTL mobile menu slides from RIGHT */
+  html[dir="rtl"] .nav-menu,
+  html[lang="he"] .nav-menu,
+  html[lang="ar"] .nav-menu {
+    left: auto !important;
+    right: 0 !important;
+  }
+  
+  /* ===========================================
+     V2 MOBILE LANGUAGE SWITCHER FIX
+     V2 sites hide .nav-cta-container on mobile but we need
+     the language switcher to remain visible. Position it
+     between the phone button and the hamburger menu.
+     =========================================== */
+  .nav-cta-container {
+    display: flex !important;
+    position: absolute !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: auto !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    z-index: 1001 !important;
+  }
+  
+  /* Hide CTA button inside container on mobile */
+  .nav-cta-container .nav-cta-btn,
+  .nav-cta-container > a:not(.lang-option):not(.lang-switcher-current) {
+    display: none !important;
+  }
+  
+  /* Keep language switcher visible and compact */
+  .nav-cta-container .lang-switcher {
+    display: flex !important;
+    margin: 0 !important;
+    width: auto !important;
+    position: relative !important;
+  }
+  
+  /* ===========================================
+     MOBILE LANGUAGE DROPDOWN POSITIONING FIX
+     CRITICAL: Override the mobile responsive CSS that sets
+     [style*="position: absolute"] { position: relative !important }
+     The dropdown MUST use position: absolute to appear below the button.
+     =========================================== */
+  .lang-switcher-dropdown,
+  .nav-cta-container .lang-switcher-dropdown,
+  .lang-switcher .lang-switcher-dropdown,
+  div.lang-switcher-dropdown,
+  [class*="lang-switcher"] .lang-switcher-dropdown {
+    position: absolute !important;
+    top: 100% !important;
+    margin-top: 8px !important;
+    min-width: 140px !important;
+    background: white !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+    z-index: 1002 !important;
+    /* Override any transform that might affect positioning */
+    transform: none !important;
+  }
+  
+  /* When dropdown is visible, ensure positioning is correct */
+  .lang-switcher-dropdown[style*="visibility: visible"],
+  .lang-switcher-dropdown[style*="opacity: 1"] {
+    position: absolute !important;
+    top: 100% !important;
+  }
+  
+  /* LTR: dropdown aligns to left */
+  html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .lang-switcher-dropdown,
+  html[dir="ltr"] .lang-switcher-dropdown {
+    left: 0 !important;
+    right: auto !important;
+  }
+  
+  /* RTL: dropdown aligns to right */
+  html[dir="rtl"] .lang-switcher-dropdown,
+  html[lang="he"] .lang-switcher-dropdown,
+  html[lang="ar"] .lang-switcher-dropdown {
+    right: 0 !important;
+    left: auto !important;
+  }
+  
+  /* LTR: position near hamburger (which is at left: 20px), to its right */
+  html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .nav-cta-container,
+  html[dir="ltr"] .nav-cta-container {
+    left: 45px !important;
+    right: auto !important;
+  }
+  
+  /* RTL: position near hamburger (which is at right: 20px), to its left */
+  html[dir="rtl"] .nav-cta-container,
+  html[lang="he"] .nav-cta-container,
+  html[lang="ar"] .nav-cta-container {
+    right: 45px !important;
+    left: auto !important;
+  }
+  
+  /* Language switcher preserves its inline color/fill set during generation */
+}
+
+</style>
+
     <!-- Favicons -->
     <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
@@ -1324,7 +1860,7 @@
       "home_p_22": "Personalized surfing experiences with professional equipment and expert instruction. From first steps on the waves to advanced techniques - we're here for you.",
       "home_p_23": "One-on-one training with certified instructors who adapt the pace and techniques precisely to your level.",
       "home_p_24": "Group sessions up to 4 participants - intimate enough to receive personal attention, social enough to enjoy together.",
-      "home_p_25": "Not just rental - we help you choose the exact equipment that fits your height, weight and experience level.",
+      "home_p_25": "Not just rental - we help you choose the exact equipment that suits your height, weight and experience level.",
       "home_p_26": "Proper learning from the start - basic techniques, ocean safety rules, and reading wave conditions to surf with confidence.",
       "home_p_27": "Structured approach that allows you to see development - from video documentation to detailed feedback after each session.",
       "home_p_28": "All equipment undergoes regular inspections, thorough cleaning and constant maintenance - you get equipment in perfect condition every time.",
@@ -1333,18 +1869,18 @@
       "home_p_31": "We'll help you find the perfect equipment for your level and surfing conditions",
       "home_p_32": "Our clients talk about the transformation - from initial confidence to safe and professional surfing. Every journey begins with one step, and we're here to accompany you on every wave.",
       "home_p_33": "\"I was sure this wasn't for me. After 4 sessions with the רוח בגלים coaches, not only am I surfing - I feel confident in the water for the first time in my life.\"",
-      "home_p_34": "\"I surfed for years but always felt something was missing. The coaches here taught me advanced techniques that elevated my level several times over. They're truly professional.\"",
-      "home_p_35": "\"We rented equipment for the whole family and everything was perfect - the equipment fit exactly our level, and the team was available for any question. Premium experience from start to finish.\"",
+      "home_p_34": "\"I've been surfing for years but always felt something was missing. The coaches here taught me advanced techniques that elevated my level several times over. They're truly professional.\"",
+      "home_p_35": "\"We rented equipment for the whole family and everything was perfect - the equipment suited our level exactly, and the staff was available for any question. Premium experience from start to finish.\"",
       "home_p_36": "Clear progress plan adapted to your pace",
       "home_p_37": "Relaxed and professional training with emphasis on safety",
       "home_p_38": "Equipment that fits exactly your level and goals",
-      "home_p_39": "We'll customize the perfect path for you according to your level and surfing goals.",
+      "home_p_39": "We'll tailor the perfect path for you according to your level and surfing goals.",
       "home_p_40": "Exciting surfing experience and water activities for the whole family. Offering equipment rental, lessons and personalized programs.",
       "home_p_41": "© 2026 רוח בגלים. All rights reserved.",
       "home_h3_10": "Progress tracking",
       "home_h3_11": "Professional equipment care",
-      "home_h3_12": "Check out our rental options",
-      "home_h3_13": "From water-shy to confident surfer",
+      "home_h3_12": "View rental options",
+      "home_h3_13": "From water-fearful to confident surfer",
       "home_h3_14": "Technique that changes everything",
       "home_h3_15": "Service on another level",
       "home_h3_16": "Quick links",
@@ -1368,11 +1904,11 @@
       "terms_p_18": "רוח בגלים provides sports and recreation services through the website. The services are subject to the terms detailed in this document and may change from time to time.",
       "terms_p_19": "Use of the website is conditional upon compliance with the following terms:",
       "terms_p_20": "If the services include payment:",
-      "terms_p_21": "The services are provided \"as is\" without warranty of any kind. The company will not be liable for indirect, consequential or special damages arising from use of the website, except in cases where the law provides otherwise.",
-      "terms_p_22": "All content on the website, including texts, images, design and code, are protected by copyrights belonging to רוח בגלים. It is prohibited to copy, distribute or make commercial use of the content without written permission.",
+      "terms_p_21": "The services are provided \"as is\" without warranty of any kind. The company shall not be liable for indirect, consequential or special damages arising from use of the website, except in cases where the law provides otherwise.",
+      "terms_p_22": "All content on the website, including texts, images, design and code, is protected by copyrights belonging to רוח בגלים. It is prohibited to copy, distribute or make commercial use of the content without written permission.",
       "terms_p_23": "Collection and use of personal information is subject to our privacy policy. Use of the website constitutes agreement to the privacy policy as detailed separately.",
-      "terms_p_24": "The company may change these terms of use at any time. Material changes will be published on the website with 30 days' advance notice. Continued use after the change constitutes agreement to the new terms.",
-      "terms_p_25": "The company may discontinue or restrict the service at any time, including in case of violation of the terms of use. In case of service termination, the provisions of the relevant sections will remain in effect.",
+      "terms_p_24": "The company may change these terms of use at any time. Material changes will be published on the website with 30 days advance notice. Continued use after the change constitutes agreement to the new terms.",
+      "terms_p_25": "The company may discontinue or restrict the service at any time, including in case of violation of the terms of use. In case of service termination, the provisions of the relevant sections shall remain in effect.",
       "terms_p_26": "These terms of use are subject to the laws of the State of Israel. Any dispute will be heard in the competent courts in Israel, with preference given to arbitration or mediation where possible.",
       "terms_p_27": "For questions or clarifications regarding the terms of use:",
       "terms_p_28": "Exciting surfing experience and water activities for the whole family. We offer equipment rental, lessons and customized programs.",
@@ -1382,9 +1918,9 @@
       "terms_h2_11": "10. Service Termination",
       "terms_h2_12": "11. Governing Law and Dispute Resolution",
       "terms_h2_13": "12. General Provisions",
-      "terms_h2_14": "13. Contact Details",
+      "terms_h2_14": "13. Contact Information",
       "terms_h3_15": "Quick Links",
-      "terms_h3_16": "Contact",
+      "terms_h3_16": "Contact Us",
       "terms_h3_17": "Follow Us",
       "terms_li_42": "\"The Company\" - רוח בגלים",
       "terms_li_43": "\"The User\" - anyone who browses or uses the website",
@@ -1400,7 +1936,7 @@
       "terms_li_53": "Updating personal information as needed",
       "terms_li_54": "Payments are processed through secure and encrypted systems",
       "terms_li_55": "Prices include VAT as required by law",
-      "terms_li_56": "Right of cancellation will stand in accordance with consumer protection law",
+      "terms_li_56": "Right of transaction cancellation will stand in accordance with consumer protection law",
       "terms_li_57": "Refunds will be processed within 14 business days from cancellation approval",
       "terms_li_58": "If part of the terms is declared invalid, the remaining terms will remain in effect",
       "terms_li_59": "Non-enforcement of a right will not be considered a waiver of it",
@@ -1411,7 +1947,7 @@
       "terms_li_64": "Address: Company Address, Israel",
       "terms_li_65": "Programs",
       "terms_li_66": "Rental",
-      "terms_li_67": "Contact",
+      "terms_li_67": "Contact Us",
       "terms_li_68": "[business_email]",
       "terms_li_69": "[business_phone]",
       "terms_li_70": "[business_address]",
@@ -1425,11 +1961,11 @@
       "contact_h4_8": "Convenient parking",
       "contact_h4_9": "Meeting point",
       "contact_p_11": "Happily created by&nbsp;Zappy",
-      "contact_p_12": "We're available to answer any questions and help you choose the perfect program or the most suitable equipment for your needs.",
+      "contact_p_12": "We're available to answer any question and help you choose the perfect program or the most suitable equipment for your needs.",
       "contact_p_13": "Tell us about your surfing goals, your current experience level, and whether you need equipment rental. We'll get back to you quickly with a personalized plan.",
-      "contact_p_14": "We operate along the Mediterranean coastline, in the most perfect areas for wave surfing and kitesurfing. Our sessions take place on beaches with ideal surfing conditions, convenient accessibility and nearby parking.",
-      "contact_p_15": "Public parking is available within a short walking distance from the meeting point. We recommend arriving 15 minutes before the lesson begins.",
-      "contact_p_16": "Meet by the central lifeguard station. Our instructors will be waiting with a \"Wind in Waves\" flag and will help you with the equipment.",
+      "contact_p_14": "We operate along the Mediterranean coast, in the most perfect areas for wave surfing and kitesurfing. Our sessions take place on beaches with ideal surfing conditions, convenient accessibility and nearby parking.",
+      "contact_p_15": "Public parking is available within a short walking distance from the meeting point. We recommend arriving 15 minutes before the lesson starts.",
+      "contact_p_16": "Meet by the main lifeguard station. Our instructors will be waiting with a 'Wind in Waves' flag and will help you with the equipment.",
       "contact_p_17": "Swimwear, towel, sunscreen and hat. We provide all surfing equipment - surfboard, wetsuit and safety accessories.",
       "contact_p_18": "Don't worry – you can start simple. Come to an introductory course or rent equipment for one day and feel the waves yourself. We're here to help you find your perfect way to the water.",
       "contact_p_19": "Exciting surfing experience and water activities for the whole family. Offering equipment rental, lessons and personalized programs.",
@@ -1440,8 +1976,8 @@
       "home_alt_107": "Professional maintained surfboard",
       "home_alt_108": "Professional maintenance details",
       "home_alt_109": "Quality surfing equipment",
-      "home_alt_110": "Professional safety gear",
-      "home_alt_111": "Variety of rental equipment",
+      "home_alt_110": "Professional safety accessories",
+      "home_alt_111": "Variety of equipment for rent",
       "home_alt_112": "Quality materials",
       "home_alt_113": "רוח בגלים",
       "home_link_77": "Zappy",
@@ -1477,7 +2013,7 @@
       "home_span_51": "Friendly atmosphere",
       "home_span_52": "Premium equipment",
       "home_span_53": "Personal customization",
-      "home_span_54": "Professional consultation",
+      "home_span_54": "Professional guidance",
       "home_span_55": "Maximum safety",
       "home_span_56": "Theory and practice",
       "home_span_57": "Knowledge for life",
@@ -1512,13 +2048,13 @@
       "privacy_p_13": "רוח בגלים (\"the Company\", \"we\", \"our\") is committed to protecting your privacy. This privacy policy explains how we collect, use and protect your information when using the website www.company.com (\"the Service\").",
       "privacy_p_14": "We may collect the following types of information:",
       "privacy_p_15": "We use the collected information for the following purposes:",
-      "privacy_p_16": "We will not sell, lease or share your personal information with third parties, except in the following cases:",
-      "privacy_p_17": "In accordance with the Privacy Protection Law 5741-1981, you have the following rights:",
+      "privacy_p_16": "We will not sell, rent or share your personal information with third parties, except in the following cases:",
+      "privacy_p_17": "In accordance with the Privacy Protection Law 1981, you have the following rights:",
       "privacy_p_18": "Our website uses cookies to improve user experience. You can manage cookies through your browser settings. Disabling cookies may affect website functionality.",
-      "privacy_p_19": "We implement reasonable security measures to protect your information, including encryption, firewalls, and restricted access control. However, no transmission or storage method is 100% secure.",
+      "privacy_p_19": "We implement reasonable security measures to protect your information, including encryption, firewalls, and restricted access control. However, no method of transmission or storage is 100% secure.",
       "privacy_p_20": "We may update this privacy policy from time to time. Material changes will be published on the website with 30 days advance notice.",
       "privacy_p_21": "For questions or requests regarding this privacy policy, you can contact us:",
-      "privacy_p_22": "Database Registrar: For complaints, you can contact the Database Registrar at the Ministry of Justice",
+      "privacy_p_22": "Data Protection Registrar: For complaints, you can contact the Data Protection Registrar at the Ministry of Justice",
       "privacy_p_23": "Exciting surfing experience and water activities for the whole family. We offer equipment rental, lessons, and personalized programs.",
       "privacy_p_24": "© 2026 רוח בגלים. All rights reserved.",
       "rentals_h1_1": "Premium Equipment Rental, Guided and Hassle-Free",
@@ -1532,35 +2068,35 @@
       "rentals_h3_9": "Additional Accessories",
       "rentals_p_18": "Happily created by&nbsp;Zappy",
       "rentals_p_19": "We match you with the perfect equipment for your level, ensuring maximum safety and quality. Every item is inspected, cleaned, and personally fitted so you can focus on what matters - enjoying the waves.",
-      "rentals_p_20": "Everything you need to start surfing – professional equipment maintained with care",
-      "rentals_p_21": "A wide range of surfboards for every level – from wide, stable boards for beginners to advanced boards for experienced surfers. All our boards undergo daily inspection and are maintained to the highest standards.",
+      "rentals_p_20": "Everything you need to start surfing - professional equipment maintained with care",
+      "rentals_p_21": "A wide range of surfboards for every level - from wide, stable boards for beginners to advanced boards for experienced surfers. All our boards undergo daily inspection and are maintained to the highest standards.",
       "rentals_p_22": "Latest generation kites for kite surfing, suitable for different wind conditions. Our equipment includes kites in various sizes to perfectly match wind conditions and surfer weight, with advanced safety systems.",
-      "rentals_p_23": "Essential safety equipment for every surfer – comfortable and adjustable harnesses for kite surfing and quality flotation vests. Equipment undergoes periodic inspections and is sanitized after each use to ensure maximum hygiene and safety.",
-      "rentals_p_24": "All the small accessories that make the surfing experience perfect – wetsuits, safety leashes, board wax, fins and more. We make sure you don't miss anything to enjoy a perfect day on the water.",
+      "rentals_p_23": "Essential safety equipment for every surfer - comfortable and adjustable harnesses for kite surfing and quality flotation vests. Equipment undergoes periodic inspections and is sanitized after each use to ensure maximum hygiene and safety.",
+      "rentals_p_24": "All the small accessories that make the surfing experience perfect - wetsuits, safety leashes, board wax, fins and more. We make sure you don't lack anything to enjoy a perfect day on the water.",
       "rentals_p_25": "Interested in renting equipment? Contact us and we'll take care of all the details",
       "rentals_p_26": "Every piece of equipment undergoes a thorough inspection process to ensure your safety and comfort in the water",
       "rentals_p_27": "Every item undergoes comprehensive safety inspection before and after each rental. We check connections, seams, and safety systems so you can focus solely on surfing.",
       "rentals_p_28": "Ill-fitting equipment can ruin the experience. We insist on precise personal fitting to your height, weight and skill level - because comfortable surfing is better surfing.",
-      "rentals_p_29": "Our equipment is specially tuned for local surfing conditions. Every fin adjusted, every kite balanced, and every suit maintained to give you maximum performance.",
-      "rentals_p_30": "\"The equipment I rented was in perfect condition - relatively new surfboard, clean and tidy wetsuit. The instructor took time to fit me with the right board for my level and gave professional tips on how to maintain it. This rental really elevated my surfing experience to another level.\"",
+      "rentals_p_29": "Our equipment is specially tuned for local surfing conditions. Every fin is adjusted, every kite is balanced, and every wetsuit is maintained to give you maximum performance.",
+      "rentals_p_30": "\"The equipment I rented was in perfect condition - a relatively new surfboard, clean and tidy wetsuit. The instructor took time to fit me with the right board for my level and gave professional tips on how to maintain it. This rental really elevated my surfing experience to another level.\"",
       "rentals_p_31": "\"As someone just starting with wave surfing, I was worried about renting unsuitable equipment. The team here took me step by step - explained about surfboard types, fitted me with a wetsuit in exactly the right size, and even gave a short briefing on how to enter the water. I felt safe and prepared, and the equipment was quality and comfortable.\"",
-      "rentals_p_32": "We are here to guide you in choosing the right equipment that perfectly matches your abilities and surfing style. With years of experience and deep knowledge of all types of equipment, we'll ensure you head out to sea with complete confidence.",
-      "rentals_p_33": "Exciting surfing experience and water activities for the whole family. We offer equipment rental, lessons and customized programs.",
+      "rentals_p_32": "We're here to guide you in choosing the right equipment that perfectly matches your abilities and surfing style. With years of experience and deep knowledge of all types of equipment, we'll ensure you head out to sea with complete confidence.",
+      "rentals_p_33": "Exciting surfing and water activities experience for the whole family. We offer equipment rental, lessons and customized programs.",
       "rentals_p_34": "© 2026 רוח בגלים. All rights reserved.",
       "terms_alt_74": "רוח בגלים",
       "terms_alt_75": "רוח בגלים",
       "terms_nav_71": "Programs",
       "terms_nav_72": "Rental",
-      "terms_nav_73": "Contact",
+      "terms_nav_73": "Contact Us",
       "contact_h4_10": "What to bring",
       "contact_li_51": "Programs",
-      "contact_li_52": "Rental",
+      "contact_li_52": "Rentals",
       "contact_li_53": "Contact Us",
       "contact_li_54": "[business_email]",
       "contact_li_55": "[business_phone]",
       "contact_li_56": "[business_address]",
       "privacy_h3_10": "Quick Links",
-      "privacy_h3_11": "Contact",
+      "privacy_h3_11": "Contact Us",
       "privacy_h3_12": "Follow Us",
       "privacy_li_37": "Personal information: name, email address, phone number, and address",
       "privacy_li_38": "Technical information: IP address, browser type, operating system, and website usage data",
@@ -1577,7 +2113,7 @@
       "privacy_li_49": "Right to correct incorrect or inaccurate information",
       "privacy_li_50": "Right to delete personal information under certain circumstances",
       "privacy_li_51": "Right to object to information processing for marketing purposes",
-      "privacy_li_52": "Right to file a complaint with the Database Registrar",
+      "privacy_li_52": "Right to file a complaint with the Data Protection Registrar",
       "privacy_li_53": "Company: רוח בגלים",
       "privacy_li_54": "Email: info@company.com",
       "privacy_li_55": "Phone: 03-1234567",
@@ -1602,23 +2138,23 @@
       "programs_p_21": "Every training program is personally tailored to your goals – whether you're starting your journey or want to improve existing technique. We offer a wide range of learning tracks for all levels and ages.",
       "programs_p_22": "Accelerated track for beginners who want to quickly master the basics – balance, paddling, and wave reading. Focused training with emphasis on safety and building confidence in the water.",
       "programs_p_23": "For experienced surfers who want to upgrade performance – working on timing, advanced wave reading, and complex maneuvers. Suitable for those who already master the basics and want to level up.",
-      "programs_p_24": "Unique program focusing on risk management, ocean conditions awareness, and safety protocols. Ideal for anyone who wants to surf confidently and know how to respond in unexpected situations.",
+      "programs_p_24": "Unique program focusing on risk management, understanding sea conditions, and safety protocols. Ideal for anyone who wants to surf confidently and know how to react in unexpected situations.",
       "programs_p_25": "Advanced track for ambitious surfers – athletic training, competitive strategies, and professional techniques. We'll work on speed, power, and precise execution of complex maneuvers.",
-      "programs_p_26": "Special instruction program for children and youth ages 10+ – fun, safe, and age-appropriate learning. Emphasis on playfulness, teamwork, and building love for the ocean and sport.",
+      "programs_p_26": "Special instruction program for children and teens ages 10+ – fun, safe, and age-appropriate learning. Emphasis on playfulness, teamwork, and building love for the ocean and sport.",
       "programs_p_27": "Designed for those experiencing fears or wanting to overcome mental barriers – we'll work at your pace, with patience and full support. Also suitable for those returning to surfing after a long break.",
-      "programs_p_28": "All programs can be personally customized according to your goals, ocean conditions, and experience level. We'd be happy to build a unique track that fits exactly your needs.",
+      "programs_p_28": "All programs can be personally customized according to your goals, sea conditions, and experience level. We'd be happy to build a unique track that fits exactly your needs.",
       "programs_p_29": "Commitment to excellence in every aspect of surfing",
-      "programs_p_30": "Customized safe training",
+      "programs_p_30": "Customized safety training",
       "programs_p_31": "Every lesson is planned with emphasis on safety and maintaining international safety standards",
       "programs_p_32": "Premium equipment maintenance",
       "programs_p_33": "Surfing equipment rental with weekly professional maintenance for optimal performance",
       "programs_p_34": "Group participants",
       "programs_p_35": "Small groups for personal attention and faster progression",
-      "programs_p_36": "Progress programs for every level",
+      "programs_p_36": "Progression programs for every level",
       "programs_p_37": "From beginners to advanced - every surfer receives a personalized training program",
       "programs_p_38": "Certified instructors with years of experience teaching surfing to children and adults. Each instructor brings a unique approach, high professionalism, and genuine passion for the sea and surfing.",
       "programs_p_39": "Head instructor and founder",
-      "programs_p_40": "15 years of experience in surf instruction, specializing in training beginners and developing advanced techniques. My approach is based on building self-confidence and deep understanding of the sea and waves.",
+      "programs_p_40": "15 years of surfing instruction experience, specializing in training beginners and developing advanced techniques. My approach is based on building self-confidence and deep understanding of the sea and waves.",
       "programs_p_41": "Senior instructor",
       "programs_p_42": "Specializes in teaching children and teenagers, with emphasis on fun and safe learning. Holds international certifications and 8 years of instruction experience. Loves seeing her students progress and feel comfortable in the water.",
       "programs_p_43": "We'll adapt the instruction program to your level and personal comfort zone, so you feel safe and enjoy every step.",
@@ -1641,7 +2177,7 @@
       "terms_link_31": "info@company.com",
       "terms_link_32": "Programs",
       "terms_link_33": "Rental",
-      "terms_link_34": "Contact",
+      "terms_link_34": "Contact Us",
       "terms_link_35": "[business_email]",
       "terms_link_36": "[business_phone]",
       "terms_link_37": "[business_address]",
@@ -1656,10 +2192,10 @@
       "contact_alt_67": "רוח בגלים",
       "contact_btn_46": "Send Message",
       "contact_nav_57": "Programs",
-      "contact_nav_58": "Rental",
+      "contact_nav_58": "Rentals",
       "contact_nav_59": "Contact Us",
       "privacy_alt_66": "רוח בגלים",
-      "privacy_alt_67": "Ruach BeGalim",
+      "privacy_alt_67": "Wind in Waves",
       "privacy_nav_63": "Programs",
       "privacy_nav_64": "Rental",
       "privacy_nav_65": "Contact",
@@ -1668,7 +2204,7 @@
       "programs_h3_12": "Weekly",
       "programs_h3_13": "Customized",
       "programs_h3_14": "Jonathan Cohen",
-      "programs_h3_15": "Noa Levi",
+      "programs_h3_15": "Noa Levy",
       "programs_h3_16": "Quick links",
       "programs_h3_17": "Contact",
       "programs_h3_18": "Follow us",
@@ -1694,7 +2230,7 @@
       "contact_link_34": "Watch our tutorials",
       "contact_link_35": "Equipment rental",
       "contact_link_36": "Programs",
-      "contact_link_37": "Rental",
+      "contact_link_37": "Rentals",
       "contact_link_38": "Contact Us",
       "contact_link_39": "[business_email]",
       "contact_link_40": "[business_phone]",
@@ -1748,7 +2284,7 @@
       "rentals_link_77": "Accessibility Statement",
       "rentals_link_78": "Generated by Zappy",
       "rentals_span_35": "Cleaned",
-      "rentals_span_36": "Tested",
+      "rentals_span_36": "Inspected",
       "rentals_span_37": "Level-matched",
       "rentals_span_38": "Premium brands",
       "rentals_span_39": "Beginner-friendly",
@@ -1763,12 +2299,12 @@
       "rentals_span_48": "Completes the experience",
       "rentals_span_49": "High quality",
       "rentals_span_50": "Affordable prices",
-      "rentals_span_51": "Testing",
+      "rentals_span_51": "Inspection",
       "rentals_span_52": "Cleaning",
-      "rentals_span_53": "Tuning",
+      "rentals_span_53": "Adjustment",
       "rentals_span_54": "Fit check",
       "rentals_span_55": "Equipment rental",
-      "rentals_span_56": "Advanced board",
+      "rentals_span_56": "Advanced surfboard",
       "rentals_span_57": "Excellent service",
       "rentals_span_58": "Beginner",
       "rentals_span_59": "Personal instruction",
@@ -1791,11 +2327,11 @@
       "legal_terms_p_15": "[business_name] provides general services through the website. The services are subject to the terms detailed in this document and may change from time to time.",
       "legal_terms_p_16": "Use of the website is conditional upon compliance with the following terms:",
       "legal_terms_p_17": "If the services include payment:",
-      "legal_terms_p_18": "The services are provided \"as is\" without warranty of any kind. The company shall not be liable for indirect, consequential or special damages arising from use of the website, except in cases where the law provides otherwise.",
-      "legal_terms_p_19": "All content on the website, including texts, images, design and code, is protected by copyrights belonging to [business_name]. It is prohibited to copy, distribute or make commercial use of the content without written permission.",
+      "legal_terms_p_18": "The services are provided \"as is\" without warranty of any kind. The company will not be liable for indirect, consequential or special damages arising from use of the website, except in cases where the law provides otherwise.",
+      "legal_terms_p_19": "All content on the website, including texts, images, design and code, are protected by copyrights belonging to [business_name]. It is prohibited to copy, distribute or make commercial use of the content without written permission.",
       "legal_terms_p_20": "Collection and use of personal information is subject to our privacy policy. Use of the website constitutes agreement to the privacy policy as detailed separately.",
-      "legal_terms_p_21": "The company may change these terms of use at any time. Material changes will be published on the website with 30 days advance notice. Continued use after the change constitutes agreement to the new terms.",
-      "legal_terms_p_22": "The company may discontinue or limit the service at any time, including in case of violation of the terms of use. In case of service termination, the provisions of the relevant sections shall remain in effect.",
+      "legal_terms_p_21": "The company may modify these terms of use at any time. Material changes will be published on the website with 30 days advance notice. Continued use after the change constitutes agreement to the new terms.",
+      "legal_terms_p_22": "The company may discontinue or limit the service at any time, including in case of violation of the terms of use. In case of service termination, the provisions of the relevant sections will remain in effect.",
       "legal_terms_p_23": "These terms of use are subject to the laws of the State of Israel. Any dispute will be heard in the competent courts in Israel, with preference given to arbitration or mediation where possible.",
       "legal_terms_p_24": "For questions or clarifications regarding the terms of use:",
       "programs_alt_100": "Professional surf instructor",
@@ -1854,7 +2390,7 @@
       "legal_terms_li_29": "\"The User\" - anyone who browses or uses the website",
       "legal_terms_li_30": "\"The Services\" - general services provided through the website",
       "legal_terms_li_31": "Using the website for legal purposes only",
-      "legal_terms_li_32": "Not interfering with website operation or other users",
+      "legal_terms_li_32": "Not interfering with website operations or other users",
       "legal_terms_li_33": "Not uploading offensive, illegal or harmful content",
       "legal_terms_li_34": "Respecting copyrights and intellectual property",
       "legal_terms_li_35": "Not performing actions that may harm website security",
@@ -1862,12 +2398,12 @@
       "legal_terms_li_37": "Maintaining confidentiality of account access details",
       "legal_terms_li_38": "Immediate notification of any unauthorized use of account",
       "legal_terms_li_39": "Updating personal information as needed",
-      "legal_terms_li_40": "Payments are made through secure and encrypted systems",
+      "legal_terms_li_40": "Payments are processed through secure and encrypted systems",
       "legal_terms_li_41": "Prices include VAT as required by law",
-      "legal_terms_li_42": "Right of transaction cancellation shall stand in accordance with consumer protection law",
+      "legal_terms_li_42": "Right of transaction cancellation will stand in accordance with consumer protection law",
       "legal_terms_li_43": "Refunds will be processed within 14 business days from cancellation approval",
-      "legal_terms_li_44": "If part of the terms is declared invalid, the remaining terms shall remain in effect",
-      "legal_terms_li_45": "Non-enforcement of a right shall not be considered a waiver thereof",
+      "legal_terms_li_44": "If part of the terms is declared invalid, the remaining terms will remain in effect",
+      "legal_terms_li_45": "Non-enforcement of a right will not be considered a waiver of it",
       "legal_terms_li_46": "The terms of use constitute the entire agreement between the parties",
       "legal_terms_li_47": "Company: [business_name]",
       "legal_terms_li_48": "Email: [business_email]",
@@ -1882,16 +2418,16 @@
       "accessibility_h2_7": "6. Contact and Feedback",
       "accessibility_h3_8": "WCAG 2.1 Standard Compliance",
       "accessibility_h3_9": "Quick Links",
-      "accessibility_p_12": "Ruach BeGalim is committed to making services accessible to the general public. We work to implement the Israeli Standard (IS 5568) guidelines based on WCAG 2.1 Level AA guidelines.",
+      "accessibility_p_12": "Wind in Waves is committed to making our services accessible to the general public. We work to implement the Israeli Standard (IS 5568) guidelines based on WCAG 2.1 Level AA guidelines.",
       "accessibility_p_13": "We believe in equal rights and in every person's right to receive information and services independently and equally. This website was designed and built with special emphasis on accessibility for people with disabilities.",
       "accessibility_p_14": "The website complies with WCAG 2.1 Level AA standard, which includes:",
       "accessibility_p_15": "The website was tested using:",
-      "accessibility_p_16": "We work continuously to improve website accessibility and update it according to technological developments and user feedback.",
+      "accessibility_p_16": "We work continuously to improve the website's accessibility and update it according to technological developments and user feedback.",
       "accessibility_p_17": "If you encountered an accessibility issue on the website or need assistance, please contact us:",
-      "accessibility_p_18": "Response times: We respond to accessibility inquiries within 3 business days and work to resolve issues within 10 business days.",
-      "accessibility_p_19": "Complaints: You can file a complaint with the Ministry of Justice - Commission for Equal Rights of Persons with Disabilities",
+      "accessibility_p_18": "Response times: We respond to accessibility inquiries within 3 business days and work toward resolution within 10 business days.",
+      "accessibility_p_19": "Complaints: You can file a complaint with the Ministry of Justice - Commissioner for Equal Rights of Persons with Disabilities",
       "accessibility_p_20": "Exciting surfing experience and water activities for the whole family. We offer equipment rental, lessons and customized programs.",
-      "accessibility_p_21": "© 2026 Ruach BeGalim. All rights reserved.",
+      "accessibility_p_21": "© 2026 Wind in Waves. All rights reserved.",
       "contact_page_title": "Contact - רוח בגלים",
       "legal_privacy_h1_1": "Privacy Policy",
       "legal_privacy_h2_2": "1. Information Collection",
@@ -1901,11 +2437,11 @@
       "legal_privacy_h2_6": "5. Cookies",
       "legal_privacy_h2_7": "6. Information Security",
       "legal_privacy_h2_8": "7. Policy Changes",
-      "legal_privacy_h2_9": "8. Contact",
+      "legal_privacy_h2_9": "8. Contact Us",
       "legal_privacy_p_10": "[business_name] (\"the Company\", \"we\", \"our\") is committed to protecting your privacy. This privacy policy explains how we collect, use and protect your information when using the website www.company.com (\"the Service\").",
       "legal_privacy_p_11": "We may collect the following types of information:",
       "legal_privacy_p_12": "We use the collected information for the following purposes:",
-      "legal_privacy_p_13": "We will not sell, lease or share your personal information with third parties, except in the following cases:",
+      "legal_privacy_p_13": "We will not sell, rent or share your personal information with third parties, except in the following cases:",
       "legal_privacy_p_14": "In accordance with the Privacy Protection Law 5741-1981, you have the following rights:",
       "legal_privacy_p_15": "Our website uses cookies to improve user experience. You can manage cookies through your browser settings. Disabling cookies may affect website functionality.",
       "legal_privacy_p_16": "We take reasonable security measures to protect your information, including encryption, firewalls and restricted access control. However, no method of transmission or storage is 100% secure.",
@@ -1924,7 +2460,7 @@
       "accessibility_li_39": "Hierarchically structured headings",
       "accessibility_li_40": "Descriptive and clear links",
       "accessibility_li_41": "Zoom support up to 200% without content loss",
-      "accessibility_li_42": "Perceivable: Information is presented in ways users can perceive",
+      "accessibility_li_42": "Perceivable: Information is presented in ways that users can perceive",
       "accessibility_li_43": "Operable: Interface components are operable",
       "accessibility_li_44": "Understandable: Information and user interface are understandable",
       "accessibility_li_45": "Robust: Content can be interpreted by a variety of technologies",
@@ -1944,7 +2480,7 @@
       "accessibility_li_59": "Phone: 03-1234567",
       "accessibility_li_60": "Programs",
       "accessibility_li_61": "Rentals",
-      "accessibility_li_62": "Contact",
+      "accessibility_li_62": "Contact Us",
       "accessibility_li_63": "[business_email]",
       "accessibility_li_64": "[business_phone]",
       "accessibility_li_65": "[business_address]",
@@ -1976,7 +2512,7 @@
       "accessibility_alt_70": "רוח בגלים",
       "accessibility_nav_66": "Programs",
       "accessibility_nav_67": "Rentals",
-      "accessibility_nav_68": "Contact",
+      "accessibility_nav_68": "Contact Us",
       "accessibility_link_23": "info@company.com",
       "accessibility_link_24": "Programs",
       "accessibility_link_25": "Rental",
@@ -1999,9 +2535,9 @@
       "contact_placeholder_63": "Tell us about your goals, experience level, and preferred times...",
       "legal_terms_page_title": "Terms of Use - [business_name]",
       "terms_meta_description": "Terms of use for the website - user rights and obligations",
-      "legal_accessibility_p_9": "[business_name] is committed to making our services accessible to the general public. We work to implement the guidelines of the Israeli Standard (IS 5568) based on WCAG 2.1 guidelines at AA level.",
+      "legal_accessibility_p_9": "[business_name] is committed to making our services accessible to the general public. We work to implement the Israeli Standard guidelines (IS 5568) based on WCAG 2.1 guidelines at AA level.",
       "accessibility_page_title": "Accessibility Statement",
-      "contact_meta_description": "Contact - רוח בגלים provides professional sports and recreation services. Specializing in equipment rental.",
+      "contact_meta_description": "Contact - רוח בגלים provides professional sports and recreation services. Specializing in equipment rentals.",
       "legal_accessibility_h1_1": "Accessibility Statement",
       "legal_accessibility_h2_2": "1. Accessibility Policy",
       "legal_accessibility_h2_3": "2. Website Accessibility Arrangements",
@@ -2012,11 +2548,11 @@
       "legal_accessibility_h3_8": "WCAG 2.1 Standard Compliance",
       "legal_accessibility_p_10": "We believe in equal rights and in every person's right to receive information and services independently and equally. This website was designed and built with special emphasis on accessibility for people with disabilities.",
       "legal_accessibility_p_11": "The website complies with WCAG 2.1 AA level, which includes:",
-      "legal_accessibility_p_12": "The website has been tested using:",
+      "legal_accessibility_p_12": "The website is tested using:",
       "legal_accessibility_p_13": "We work continuously to improve website accessibility and update it according to technological developments and user feedback.",
       "legal_accessibility_p_14": "If you encounter an accessibility issue on the website or need assistance, please contact us:",
       "legal_accessibility_p_15": "Response times: We respond to accessibility inquiries within 3 business days and work toward resolution within 10 business days.",
-      "legal_accessibility_p_16": "Complaints: You may file a complaint with the Ministry of Justice - Commission for Equal Rights of Persons with Disabilities",
+      "legal_accessibility_p_16": "Complaints: You may file a complaint with the Ministry of Justice - Commissioner for Equal Rights of Persons with Disabilities",
       "legal_privacy_page_title": "Privacy Policy - [business_name]",
       "privacy_meta_description": "Our privacy policy - how we collect, use and protect your information",
       "rentals_meta_description": "Rentals - Wind in Waves provides professional sports and recreation services. Specializing in equipment rental.",
